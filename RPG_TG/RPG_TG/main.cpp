@@ -1,10 +1,32 @@
 #include <iostream>
 #include "Backpack.h"
+#include "Engine.h"
+#include "Player.h"
 
 using namespace std;
 
 int main()
 {
+	
+	Engine::getInstance();
+
+	//Player p = Engine::_p;
+	Engine::getInstance()->_p._wp.info();
+	Engine::getInstance()->_p._stats.Info();
+	Engine::getInstance()->_p._bp.Info();
+
+	Engine::afterUsageOfEngine();
+	/*
+
+	Player p;
+	p._wp.info();
+	p._stats.Info();
+	p._bp.Info();
+	Player p;
+	p._wp.info();
+	p._stats.Info();
+	p._bp.Info();
+
 	Backpack bp;
 	//bp.Info();
 	bp.AddItem(Item("Large_FA",3,10));
@@ -19,5 +41,6 @@ int main()
 	bp.Info();
 	bp.RemoveWeapon(2);
 	bp.Info();
+	*/
 	system("pause");
 }

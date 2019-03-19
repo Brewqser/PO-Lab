@@ -20,7 +20,7 @@ public:
 	void RemoveWeapon(int w);
 	void Upgrade();
 
-private:
+public:
 	int _maxcapacity;
 	int _capacity;
 	vector < Item > _items;
