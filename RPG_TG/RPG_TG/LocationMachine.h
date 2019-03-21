@@ -9,16 +9,18 @@ namespace TG
 	private:
 		LocationMachine(const LocationMachine &);
 
-		Locations _location;
+		int _location;
 
 	public:
 		LocationMachine();
 		~LocationMachine();
 
-		Locations getLocation();
+		auto getLocation();
 		void setLocation(Locations l);
 
-			
+		void print();
+		void LocationNet();
+
 	};
 }
 

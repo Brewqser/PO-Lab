@@ -13,9 +13,18 @@ namespace TG
 		~Engine();
 
 		LocationMachine _locationMachine;
+		bool _gameOver;
 
 	public:
 		static Engine &getEngine();
+
+		LocationMachine &getLocationMachine();
+
+		void printLocation();
+		void changeLocation();
+
+		void setGameOver();
+		bool getGameOver();
 
 	};
 }
