@@ -1,20 +1,21 @@
 #pragma once
 
-#include "Player.h"
+#include "Definitions.h"
+#include "LocationMachine.h"
 
-class Engine
+namespace TG
 {
-public:
-	Engine(const Engine&) = delete;
-	Engine& operator=(const Engine&) = delete;
-	static Engine* getInstance();
-	static void afterUsageOfEngine();
+	class Engine
+	{
+	private:
+		Engine();
+		Engine(const Engine &);
+		~Engine();
 
-	Player _p;
+		LocationMachine _locationMachine;
 
-private:
-	Engine();
-	
-	static Engine* _instance;
+	public:
+		static Engine &getEngine();
 
-};
+	};
+}

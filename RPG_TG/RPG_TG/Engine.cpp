@@ -1,24 +1,28 @@
 #include "Engine.h"
+#include "Definitions.h"
 
-Engine::Engine()
+namespace TG
 {
-
-}
-
-Engine* Engine::_instance = 0;
-
-Engine* Engine::getInstance()
-{
-	if (_instance == 0)
+	Engine::Engine()
 	{
-		_instance = new Engine();
+
 	}
 
-	return _instance;
-}
+	Engine::Engine(const Engine &)
+	{
 
-void Engine::afterUsageOfEngine()
-{
-	delete _instance;
+	}
+
+	Engine::~Engine()
+	{
+
+	}
+
+	Engine &Engine::getEngine()
+	{
+		static Engine engine;
+		return engine;
+	}
+
 }
 
