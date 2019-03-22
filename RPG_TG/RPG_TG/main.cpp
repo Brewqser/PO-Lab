@@ -16,8 +16,6 @@ int main()
 	while ( !TG::Engine::getEngine().getGameOver() )
 	{
 		TG::Engine::getEngine().update();
-
 	}
-
 	system("pause");
 }

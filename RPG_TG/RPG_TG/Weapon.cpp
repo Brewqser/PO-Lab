@@ -11,7 +11,14 @@ namespace TG
 
 	void Weapon::info()
 	{
-		std::cout << _name << " " << _weight << " " << _damage << std::endl;
+		if (_name != "brak")
+		{
+			std::cout << "Broñ: " << _name << " " << _weight << " " << _damage << std::endl;
+		}
+		else
+		{
+			std::cout << "Broñ: " << _name << std::endl;
+		}
 	}
 
 	int Weapon::getDamage()
@@ -22,5 +29,10 @@ namespace TG
 	int Weapon::getWeight()
 	{
 		return _weight;
+	}
+
+	std::string Weapon::getName()
+	{
+		return _name;
 	}
 }

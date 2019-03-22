@@ -85,6 +85,14 @@ namespace TG
 				_state = States::travel;
 				system("cls");
 			}
+			else if (tmp == 'i')
+			{
+				_player.useItem();
+			}
+			else if (tmp == 'w')
+			{
+				_player.updateWeapon();
+			}
 
 			break;
 

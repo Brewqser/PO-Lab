@@ -12,11 +12,15 @@ namespace TG
 
 		void info();
 		void reducehp(int r);
-
+		void addhp(int a);
 		int gethp();
+
+		void updatedamage(int u);
+		int getdamage();
 
 	private:
 		int _hp;
 		int _baseDamage;
+		int _damage;
 	};
 }

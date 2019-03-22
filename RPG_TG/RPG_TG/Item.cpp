@@ -23,4 +23,9 @@ namespace TG
 	{
 		return _weight;
 	}
+
+	std::string Item::getName()
+	{
+		return _name;
+	}
 }

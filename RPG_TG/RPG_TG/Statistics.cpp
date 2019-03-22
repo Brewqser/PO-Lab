@@ -7,13 +7,15 @@ namespace TG
 	Statistics::Statistics()
 	{
 		_hp = 1;
-		_baseDamage = 0;
+		_baseDamage = 1;
+		_damage = _baseDamage;
 	}
 
 	Statistics::Statistics(int hp, int baseDamage)
 	{
 		_hp = hp;
 		_baseDamage = baseDamage;
+		_damage = _baseDamage;
 	}
 
 	int Statistics::gethp()
@@ -28,6 +30,21 @@ namespace TG
 
 	void Statistics::info()
 	{
-		std::cout << "HP: " << _hp << " Base Damage: " << _baseDamage << std::endl << std::endl;
+		std::cout << "HP: " << _hp << " Base_Damage: " << _baseDamage << " Damage: " << _damage << std::endl << std::endl;
+	}
+
+	void Statistics::addhp( int a )
+	{
+		_hp += a;
+	}
+
+	void Statistics::updatedamage(int u)
+	{
+		_damage = _baseDamage + u;
+	}
+
+	int Statistics::getdamage()
+	{
+		return _damage;
 	}
 }

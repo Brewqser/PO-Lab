@@ -14,6 +14,7 @@ namespace TG
 
 		int gethpadd();
 		int getweight();
+		std::string getName();
 
 	private:
 		std::string _name;

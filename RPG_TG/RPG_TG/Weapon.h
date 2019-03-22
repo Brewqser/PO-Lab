@@ -14,6 +14,7 @@ namespace TG
 
 		int getWeight();
 		int getDamage();
+		std::string getName();
 
 	protected:
 		std::string _name;

@@ -55,7 +55,8 @@ namespace TG
 			if (_visited[Locations::Kitchen] == 0)
 			{
 				_visited[Locations::Kitchen] = 1;
-				std::cout << "(Dodano nó¿ kuchenny do placaka)" << std::endl << std::endl;
+				std::cout << "(Dodano nó¿ kuchenny, pokrywka do placaka)" << std::endl << std::endl;
+				Engine::getEngine().getPlayer().getBackpack().add(Weapon("Pokrywka", 2, 2));
 				Engine::getEngine().getPlayer().getBackpack().add(Weapon("Nó¿ kuchenny", 1, 5));
 			}
 			break;
@@ -74,8 +75,9 @@ namespace TG
 			if (_visited[Locations::Attic] == 0)
 			{
 				_visited[Locations::Attic] = 1;
-				std::cout << "(Dodano stary banda¿ do placaka)" << std::endl << std::endl;
+				std::cout << "(Dodano 2x stary banda¿ do placaka)" << std::endl << std::endl;
 				Engine::getEngine().getPlayer().getBackpack().add(Item("Staty Banda¿", 2, 6));
+				Engine::getEngine().getPlayer().getBackpack().add(Item("Staty Banda¿", 3, 6));
 			}
 			break;
 
@@ -88,7 +90,7 @@ namespace TG
 			std::cout << "Œwiat³o zaczyna mrógaæ, widzisz tylko jakieœ dziwne cienie." << std::endl;
 			std::cout << "Czujesz potê¿ny, k³uj¹cy bul w klatce piersiowej." << std::endl;
 			std::cout << "Umierasz ...... " << std::endl;
-			std::cout << "GAME OVER" << std::endl << std::endl;\
+			std::cout << "GAME OVER" << std::endl << std::endl;
 				// widzsz ma³ek kotki i umierasz ze szczêœcia
 
 			TG::Engine::getEngine().setGameOver();

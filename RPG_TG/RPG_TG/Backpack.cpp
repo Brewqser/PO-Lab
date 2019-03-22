@@ -76,4 +76,30 @@ namespace TG
 			}
 		}
 	}
+
+	void Backpack::showItems()
+	{
+		for (unsigned int i = 1; i <= _items.size(); i++)
+		{
+			std::cout << i << " -> " << _items[i - 1].getName() << std::endl;
+		}
+	}
+
+	void Backpack::showWeapons()
+	{
+		for (unsigned int i = 1; i <= _weapons.size(); i++)
+		{
+			std::cout << i << " -> " << _weapons[i - 1].getName() << std::endl;
+		}
+	}
+
+	std::vector < Item > &Backpack::getItems()
+	{
+		return _items;
+	}
+
+	std::vector < Weapon > &Backpack::getWeapons()
+	{
+		return _weapons;
+	}
 }
