@@ -16,6 +16,10 @@ namespace TG
 
 		void useItem();
 		void updateWeapon();
+		void removeItem();
+		int gethp();
+		Statistics &getStatistics();
+		Weapon &getWeapon();
 
 	private:
 		Statistics _statistics;

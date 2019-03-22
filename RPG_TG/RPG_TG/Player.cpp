@@ -15,6 +15,11 @@ namespace TG
 		_weapon.info();
 		std::cout << std::endl;
 		_backpack.info();
+
+		std::cout << "Opcje: " << std::endl;
+		std::cout << "i -> zarz¹dzaj przedmiotami " << std::endl;
+		std::cout << "w -> zarz¹dzaj broñmi " << std::endl;
+		std::cout << "r -> usuñ coœ z zawartoœci placaka" << std::endl << std::endl;
 	}
 
 	Backpack &Player::getBackpack()
@@ -85,5 +90,57 @@ namespace TG
 		{
 			std::cout << "Nie posiadasz ¿adnych dodatkowych broni" << std::endl;
 		}
+	}
+
+	void Player::removeItem()
+	{
+		std::cout << "Co chcesz usun¹æ:" << std::endl;
+		std::cout << "i -> przedmiot " << std::endl;
+		std::cout << "w -> broñ " << std::endl;
+
+		char a;
+		std::cin >> a;
+
+		std::cout << "0 -> powrót" << std::endl;
+
+		if (a == 'i')
+		{
+			_backpack.showItems();
+
+			int b;
+			std::cin >> b;
+
+			if (b > 0 && b <= _backpack.getItems().size())
+			{
+				_backpack.remove(b - 1, 'i');
+			}
+		}
+		else if (a == 'w')
+		{
+			_backpack.showWeapons();
+
+			int b;
+			std::cin >> b;
+
+			if (b > 0 && b <= _backpack.getWeapons().size())
+			{
+				_backpack.remove(b - 1, 'w');
+			}
+		}
+	}
+
+	int Player::gethp()
+	{
+		return _statistics.gethp();
+	}
+
+	Statistics &Player::getStatistics()
+	{
+		return _statistics;
+	}
+
+	Weapon &Player::getWeapon()
+	{
+		return _weapon;
 	}
 }

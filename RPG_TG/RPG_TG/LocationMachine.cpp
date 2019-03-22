@@ -82,18 +82,30 @@ namespace TG
 			break;
 
 		case Locations::Basemant:
-			std::cout << "Dziwne dŸwiêki nasilaj¹ siê!?" << std::endl;
-			std::cout << "Z zaciekawieniem zagl¹dasz do piwnicy." << std::endl;
-			std::cout << "Zapalasz œwiat³o...... " << std::endl;
-			std::cout << "Wchodzisz coraz g³êbiej" << std::endl;
-			std::cout << "Nagle wejœcie zostaje zaczaœniête" << std::endl;
-			std::cout << "Œwiat³o zaczyna mrógaæ, widzisz tylko jakieœ dziwne cienie." << std::endl;
-			std::cout << "Czujesz potê¿ny, k³uj¹cy bul w klatce piersiowej." << std::endl;
-			std::cout << "Umierasz ...... " << std::endl;
-			std::cout << "GAME OVER" << std::endl << std::endl;
+			if (_visited[Locations::Basemant] == 0)
+			{
+				std::cout << "Natrafiasz na 3 szczury" << std::endl;
+				std::cout << "Nie mo¿esz uciec. " << std::endl << std::endl;
+				Engine::getEngine().setState(States::fight);
+				_visited[Locations::Basemant] = 1;
+			}
+			else
+			{
+				std::cout << "Pokona³eœ szczury" << std::endl;
+				std::cout << "Dziwne dŸwiêki nasilaj¹ siê!?" << std::endl;
+				std::cout << "Z zaciekawieniem zagl¹dasz do piwnicy." << std::endl;
+				std::cout << "Zapalasz œwiat³o...... " << std::endl;
+				std::cout << "Wchodzisz coraz g³êbiej." << std::endl;
+				std::cout << "Nagle wejœcie zostaje zaczaœniête." << std::endl;
+				std::cout << "Widzisz ma³e, s³odki kotki i umierasz ze szczêœcia." << std::endl;
+				//std::cout << "Œwiat³o zaczyna mrógaæ, widzisz tylko jakieœ dziwne cienie." << std::endl;
+				//std::cout << "Czujesz potê¿ny, k³uj¹cy bul w klatce piersiowej." << std::endl;
+				//std::cout << "Umierasz ...... " << std::endl;
+				std::cout << "Happy End" << std::endl << std::endl;
 				// widzsz ma³ek kotki i umierasz ze szczêœcia
 
-			TG::Engine::getEngine().setGameOver();
+				TG::Engine::getEngine().setGameOver();
+			}
 			break;
 
 		}

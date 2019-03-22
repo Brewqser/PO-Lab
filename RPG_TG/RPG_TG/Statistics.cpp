@@ -18,6 +18,14 @@ namespace TG
 		_damage = _baseDamage;
 	}
 
+	Statistics::Statistics(std::string name, int  hp, int baseDamage)
+	{
+		_name = name;
+		_hp = hp;
+		_baseDamage = baseDamage;
+		_damage = _baseDamage;
+	}
+
 	int Statistics::gethp()
 	{
 		return _hp;
@@ -46,5 +54,10 @@ namespace TG
 	int Statistics::getdamage()
 	{
 		return _damage;
+	}
+
+	std::string Statistics::getname()
+	{
+		return _name;
 	}
 }
