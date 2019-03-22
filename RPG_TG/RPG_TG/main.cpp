@@ -14,7 +14,6 @@ int main()
 	setlocale(LC_ALL, "");
 	srand((unsigned int)time(NULL));
 
-	//TG::Engine::getEngine();
 	while ( !TG::Engine::getEngine().getGameOver() )
 	{
 		TG::Engine::getEngine().update();
