@@ -9,17 +9,24 @@ namespace TG
 	private:
 		LocationMachine(const LocationMachine &);
 
-		int _location;
+		Locations _location;
+		bool _movedone;
+		bool _visited[amountOfLocations];
 
 	public:
 		LocationMachine();
 		~LocationMachine();
 
-		auto getLocation();
+		Locations getLocation();
 		void setLocation(Locations l);
 
 		void print();
-		void LocationNet();
+		void locationNet();
+		void move(int tmp);
+
+		bool getMoveDone();
+		void resetMoveDone();
+		void setMoveDone();
 
 	};
 }

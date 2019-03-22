@@ -3,24 +3,21 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
-class Weapon
+namespace TG
 {
-public:
-	Weapon(string name, int weight, int maxamo, int damage);
+	class Weapon
+	{
+	public:
+		Weapon(std::string name, int weight, int damage);
 
-	void info();
-	string getName();
-	int getWeight();
-	int getAmo();
-	void shoot();
-	void relode();
+		void info();
 
-protected:
-	string _name;
-	int _weight;
-	int _amo;
-	int _maxamo;
-	int _damage;
-};
+		int getWeight();
+		int getDamage();
+
+	protected:
+		std::string _name;
+		int _weight;
+		int _damage;
+	};
+}

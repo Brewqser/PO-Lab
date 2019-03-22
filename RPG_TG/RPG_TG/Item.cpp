@@ -1,23 +1,26 @@
 #include "Item.h"
 
-Item::Item(string name, int weight, int hpadd)
+namespace TG
 {
-	_name = name;
-	_weight = weight;
-	_hpadd = hpadd;
-}
+	Item::Item(std::string name, int weight, int hpadd)
+	{
+		_name = name;
+		_weight = weight;
+		_hpadd = hpadd;
+	}
 
-void Item::info()
-{
-	cout << _name << " " << _weight << " " << _hpadd << endl;
-}
+	void Item::info()
+	{
+		std::cout << _name << " " << _weight << " " << _hpadd << std::endl;
+	}
 
-int Item::gethpadd()
-{
-	return _hpadd;
-}
+	int Item::gethpadd()
+	{
+		return _hpadd;
+	}
 
-int Item::getweight()
-{
-	return _weight;
+	int Item::getweight()
+	{
+		return _weight;
+	}
 }

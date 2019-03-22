@@ -1,28 +1,20 @@
 #include "Player.h"
 
-
-
-Player::Player() :_wp("Digle", 1 ,2, 50)
+namespace TG
 {
+	Player::Player()
+	{
 
-}
+	}
 
-void Player::takeDamage(int d)
-{
-	_stats.hpminus(d);
-}
+	void Player::info()
+	{
+		_statistics.info();
+		_backpack.info();
+	}
 
-void Player::lvlup()
-{
-	_stats.lvlup();
-}
-
-void Player::changeWeapon( int w)
-{
-	swap(_wp, _bp._weapons[w]);
-}
-
-void Player::dealDamage()
-{
-
+	Backpack &Player::getBackpack()
+	{
+		return _backpack;
+	}
 }

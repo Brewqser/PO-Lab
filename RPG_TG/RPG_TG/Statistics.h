@@ -2,24 +2,21 @@
 
 #include <iostream>
 
-using namespace std;
-
-class Statistics
+namespace TG
 {
-public:
-	Statistics();
-	Statistics(int hp, int lvl, int strength , int agility, int exp , int baseDamage);
+	class Statistics
+	{
+	public:
+		Statistics();
+		Statistics(int hp, int baseDamage);
 
-	void Info();
-	void hpminus(int m);
-	void lvlup();
+		void info();
+		void reducehp(int r);
 
-private:
-	int _hp;
-	int _lvl;
-	int _strength;
-	int	_agility;
-	int _exp;
-	int _baseDamage;
-};
+		int gethp();
 
+	private:
+		int _hp;
+		int _baseDamage;
+	};
+}

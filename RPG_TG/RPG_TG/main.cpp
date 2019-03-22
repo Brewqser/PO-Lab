@@ -11,11 +11,12 @@ int main()
 {
 	setlocale(LC_ALL, "");
 
-	while (!TG::Engine::getEngine().getGameOver())
-	{
-		TG::Engine::getEngine().printLocation();
+	TG::Engine::getEngine();
 
-		if ( !TG::Engine::getEngine().getGameOver())  TG::Engine::getEngine().changeLocation();
+	while ( !TG::Engine::getEngine().getGameOver() )
+	{
+		TG::Engine::getEngine().update();
+
 	}
 
 	system("pause");

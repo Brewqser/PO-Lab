@@ -3,19 +3,21 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
-class Item
+namespace TG
 {
-public:
-	Item(string name, int weight, int hpadd);
+	class Item
+	{
+	public:
+		Item(std::string name, int weight, int hpadd);
 
-	int gethpadd();
-	int getweight();
-	void info();
+		void info();
 
-private:
-	string _name;
-	int _weight;
-	int _hpadd;
-};
+		int gethpadd();
+		int getweight();
+
+	private:
+		std::string _name;
+		int _weight;
+		int _hpadd;
+	};
+}

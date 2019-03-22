@@ -8,3 +8,12 @@ enum Locations
 	Attic,
 	Basemant
 };
+
+const int amountOfLocations = 5;
+
+enum States
+{
+	select,
+	travel,
+	player
+};

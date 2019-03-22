@@ -1,23 +1,22 @@
 #pragma once
 
-#include "Backpack.h"
 #include "Statistics.h"
+#include "Backpack.h"
 
-using namespace std;
-
-class Player
+namespace TG
 {
-public:
-	Player();
-	
-	void takeDamage(int d);
-	void lvlup();
-	void changeWeapon(int w);
-	void dealDamage();
+	class Player
+	{
+	public:
+		Player();
 
-public:
-	Statistics _stats;
-	Backpack _bp;
-	Weapon _wp;
-};
+		void info();
+		
+		Backpack &getBackpack();
 
+	private:
+		Statistics _statistics;
+		Backpack _backpack;
+
+	};
+}

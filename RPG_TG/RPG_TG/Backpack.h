@@ -5,25 +5,26 @@
 #include "Item.h"
 #include "Weapon.h"
 
-using namespace std;
-
-class Backpack
+namespace TG
 {
-public:
-	Backpack();
-	Backpack(int maxcapacity);
+	class Backpack
+	{
+	public:
+		Backpack();
+		Backpack(int maxcapacity);
 
-	void Info();
-	void AddItem(Item i);
-	void RemoveItem(int i);
-	void AddWeapon(Weapon w);
-	void RemoveWeapon(int w);
-	void Upgrade();
+		void info();
 
-public:
-	int _maxcapacity;
-	int _capacity;
-	vector < Item > _items;
-	vector < Weapon >  _weapons;
-};
+		void add(Item i);
+		void add(Weapon w);
 
+		void remove(int i, char co);
+
+	public:
+		int _maxcapacity;
+		int _capacity;
+		std::vector < Item > _items;
+		std::vector < Weapon >  _weapons;
+	};
+
+}
