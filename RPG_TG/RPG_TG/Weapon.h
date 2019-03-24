@@ -1,24 +1,29 @@
 #pragma once
 
 #include <string>
-#include <iostream>
 
 namespace TG
 {
 	class Weapon
 	{
 	public:
-		Weapon(std::string name, int weight, int damage);
+		Weapon();
+		Weapon(std::string name, int damage, int weight);
 
 		void info();
 
-		int getWeight();
-		int getDamage();
+		void setName(std::string n);
+		void setDamage(int d);
+		void setWeight(int w);
+
 		std::string getName();
+		int getDamage();
+		int getWeight();
 
 	protected:
 		std::string _name;
-		int _weight;
 		int _damage;
+		int _weight;
+
 	};
 }

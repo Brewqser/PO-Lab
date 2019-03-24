@@ -4,7 +4,7 @@
 
 namespace TG
 {
-	Player::Player() : _weapon("brak", 0, 0)
+	Player::Player() : _weapon()
 	{
 		
 	}
@@ -12,131 +12,89 @@ namespace TG
 	void Player::info()
 	{
 		_statistics.info();
+		std::cout << "Wyekwipowana Broñ -> ";
 		_weapon.info();
 		std::cout << std::endl;
 		_backpack.info();
+	}
 
+	void Player::opcions()
+	{
 		std::cout << "Opcje: " << std::endl;
-		std::cout << "i -> zarz¹dzaj przedmiotami " << std::endl;
-		std::cout << "w -> zarz¹dzaj broñmi " << std::endl;
-		std::cout << "r -> usuñ coœ z zawartoœci placaka" << std::endl << std::endl;
-	}
-
-	Backpack &Player::getBackpack()
-	{
-		return _backpack;
-	}
-
-	void Player::useItem()
-	{
-		if (!_backpack.getItems().empty())
-		{
-			std::cout << "0 -> powrót" << std::endl;
-
-			_backpack.showItems();
-			int a;
-			std::cin >> a;
-			if (a > 0 && a <= _backpack.getItems().size())
-			{
-				_statistics.addhp( _backpack.getItems()[a - 1].gethpadd() );
-				_backpack.remove(a - 1, 'i');
-			}
-		}
-		else
-		{
-			std::cout << "Nie posiadasz ¿adnych przedmiotów" << std::endl;
-		}
-	}
-
-	void Player::updateWeapon()
-	{
-		if (!_backpack.getWeapons().empty())
-		{
-			std::cout << "-1 -> zdejmi broñ" << std::endl;
-			std::cout << "0 -> powrót" << std::endl;
-
-			_backpack.showWeapons();
-			int a;
-			std::cin >> a;
-			if (a > 0 && a <= _backpack.getWeapons().size())
-			{
-				if (_weapon.getName() == "brak")
-				{
-					_weapon = _backpack.getWeapons()[a - 1];
-					_backpack.remove(a - 1, 'w');
-				}
-				else
-				{
-					std::swap(_weapon, _backpack.getWeapons()[a - 1]);
-				}
-			}
-
-			if (a == -1)
-			{
-				if (_weapon.getName() != "brak")
-				{
-					_backpack.add(_weapon);
-					_weapon = Weapon("brak", 0, 0);
-				}
-				else
-				{
-					std::cout << "Nie masz za³o¿onej ¿adnej broni" << std::endl;
-				}
-			}
-
-			_statistics.updatedamage(_weapon.getDamage());
-		}
-		else
-		{
-			std::cout << "Nie posiadasz ¿adnych dodatkowych broni" << std::endl;
-		}
-	}
-
-	void Player::removeItem()
-	{
-		std::cout << "Co chcesz usun¹æ:" << std::endl;
-		std::cout << "i -> przedmiot " << std::endl;
-		std::cout << "w -> broñ " << std::endl;
-
-		char a;
-		std::cin >> a;
-
 		std::cout << "0 -> powrót" << std::endl;
-
-		if (a == 'i')
-		{
-			_backpack.showItems();
-
-			int b;
-			std::cin >> b;
-
-			if (b > 0 && b <= _backpack.getItems().size())
-			{
-				_backpack.remove(b - 1, 'i');
-			}
-		}
-		else if (a == 'w')
-		{
-			_backpack.showWeapons();
-
-			int b;
-			std::cin >> b;
-
-			if (b > 0 && b <= _backpack.getWeapons().size())
-			{
-				_backpack.remove(b - 1, 'w');
-			}
-		}
+		std::cout << "p -> zarz¹dzaj polecakiem" << std::endl;
+		std::cout << "b -> zarz¹dzaj trzyman¹ broni¹" << std::endl << std::endl;
 	}
 
-	int Player::gethp()
+	void Player::manage(char a)
 	{
-		return _statistics.gethp();
+		if (a == 'p') _backpack.manage();
+		if (a == 'b') this->equipWeapon();
+	}
+
+	void Player::equipWeapon()
+	{
+		std::cout << "Wyekwipowana Broñ -> ";
+		_weapon.info();
+		std::cout << std::endl;
+
+		std::vector < Weapon > &wep = _backpack.getWeapons();
+
+		std::cout << "Broneie w plaecaku: " << std::endl;
+		std::cout << "0 -> powrót" << std::endl;
+		std::cout << "1 -> zdejmij" << std::endl;
+		for (unsigned int i = 0; i < wep.size(); i++)
+		{
+			std::cout << i + 2 << " -> ";
+			wep[i].info();
+		}
+		int a;
+
+		std::cout << wep.size() << std::endl;
+		do
+		{
+			std::cin >> a;
+		} while (a < 0 || a > (int)wep.size() + 1);
+
+		if (a != 0)
+		{
+			if (_weapon.getName() == "")
+			{
+				if (a != 1)
+				{
+					_weapon = wep[a - 2];
+					wep.erase(wep.begin() + (a - 2));
+				}
+				else
+				{
+					std::cout << "Nie masz za³o¿onej broni" << std::endl << std::endl;
+				}
+			}
+			else
+			{
+				if (a == 1)
+				{
+					wep.push_back(_weapon);
+					_weapon = Weapon();
+				}
+				else
+				{
+					std::swap(_weapon, wep[a - 2]);
+				}
+			}
+			//std::cout << wep.size() << std::endl;
+		}
+	
 	}
 
 	Statistics &Player::getStatistics()
 	{
 		return _statistics;
+	}
+
+	Backpack &Player::getBackpack()
+	{
+		return _backpack;
 	}
 
 	Weapon &Player::getWeapon()

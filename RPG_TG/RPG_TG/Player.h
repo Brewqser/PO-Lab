@@ -11,14 +11,12 @@ namespace TG
 		Player();
 
 		void info();
-		
-		Backpack &getBackpack();
+		void opcions();
+		void manage(char a);
+		void equipWeapon();
 
-		void useItem();
-		void updateWeapon();
-		void removeItem();
-		int gethp();
 		Statistics &getStatistics();
+		Backpack &getBackpack();
 		Weapon &getWeapon();
 
 	private:

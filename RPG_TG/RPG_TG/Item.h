@@ -1,24 +1,29 @@
 #pragma once
 
 #include <string>
-#include <iostream>
 
 namespace TG
 {
 	class Item
 	{
 	public:
-		Item(std::string name, int weight, int hpadd);
+		Item();
+		Item(std::string name, int hpadd, int weight);
 
 		void info();
 
-		int gethpadd();
-		int getweight();
+		void setName(std::string n);
+		void setHpadd(int h);
+		void setWeight(int w);
+
 		std::string getName();
+		int getHpadd();
+		int getWeight();
 
 	private:
 		std::string _name;
-		int _weight;
 		int _hpadd;
+		int _weight;
+
 	};
 }

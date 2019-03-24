@@ -8,6 +8,11 @@ namespace TG
 {
 	class Engine
 	{
+	public:
+		static Engine &getEngine();
+
+		void run();
+
 	private:
 		Engine();
 		Engine(const Engine &);
@@ -15,24 +20,8 @@ namespace TG
 
 		LocationMachine _locationMachine;
 		Player _player;
-		bool _gameOver;
 		States _state;
+		bool _gameOver;
 
-	public:
-		static Engine &getEngine();
-
-		LocationMachine &getLocationMachine();
-
-		void printLocation();
-		void changeLocation();
-
-		void setGameOver();
-		bool getGameOver();
-
-		void setState(States sta);
-
-		Player &getPlayer();
-
-		void update();
 	};
 }

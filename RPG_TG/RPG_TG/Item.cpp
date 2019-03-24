@@ -1,31 +1,61 @@
 #include "Item.h"
 
+#include <iostream>
+
 namespace TG
 {
-	Item::Item(std::string name, int weight, int hpadd)
+	Item::Item()
+	{
+		_name = "";
+		_hpadd = 0;
+		_weight = 0;
+	}
+	Item::Item(std::string name, int hpadd, int weight)
 	{
 		_name = name;
-		_weight = weight;
 		_hpadd = hpadd;
+		_weight = weight;
 	}
 
 	void Item::info()
 	{
-		std::cout << _name << " " << _weight << " " << _hpadd << std::endl;
+		if (_name != "")
+		{
+			std::cout << "nazwa: " << _name << " (leczenie: " << _hpadd << ", ciê¿ar: " << _weight << ")" << std::endl;
+		}
+		else
+		{
+			std::cout << "Przedmiot nie istnieje." << std::endl;
+		}
 	}
 
-	int Item::gethpadd()
+	void Item::setName(std::string n)
 	{
-		return _hpadd;
+		_name = n;
 	}
 
-	int Item::getweight()
+	void Item::setHpadd(int h)
 	{
-		return _weight;
+		_hpadd = h;
+	}
+
+	void Item::setWeight(int w)
+	{
+		_weight = w;
 	}
 
 	std::string Item::getName()
 	{
 		return _name;
+	}
+
+	int Item::getHpadd()
+	{
+		return _hpadd;
+	}
+
+	int Item::getWeight()
+	{
+		return _weight;
 	}
 }
