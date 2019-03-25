@@ -12,6 +12,7 @@ namespace TG
 
 		void info();
 		void opcions();
+		void opcions2();
 		void manage(char a);
 		void equipWeapon();
 

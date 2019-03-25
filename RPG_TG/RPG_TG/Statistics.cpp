@@ -23,7 +23,7 @@ namespace TG
 	void Statistics::info()
 	{
 		std::cout << "Statystyki";
-		if (_name != "") std::cout << " " << _name;
+		//if (_name != "") std::cout << " " << _name;
 		std::cout << ":" << std::endl;
 		std::cout << "- HP: " << _hp << std::endl; 
 		std::cout << "- Base_Damage: " << _baseDamage << std::endl;

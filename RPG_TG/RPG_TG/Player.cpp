@@ -21,7 +21,14 @@ namespace TG
 	void Player::opcions()
 	{
 		std::cout << "Opcje: " << std::endl;
-		std::cout << "0 -> powrót" << std::endl;
+		std::cout << "p -> zarz¹dzaj polecakiem" << std::endl;
+		std::cout << "b -> zarz¹dzaj trzyman¹ broni¹" << std::endl;
+		std::cout << "t -> menu porusznia" << std::endl << std::endl;
+	}
+
+	void Player::opcions2()
+	{
+		std::cout << "Opcje: " << std::endl;
 		std::cout << "p -> zarz¹dzaj polecakiem" << std::endl;
 		std::cout << "b -> zarz¹dzaj trzyman¹ broni¹" << std::endl << std::endl;
 	}

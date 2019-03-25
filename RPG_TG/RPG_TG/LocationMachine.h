@@ -13,7 +13,7 @@ namespace TG
 	public:
 		LocationMachine();
 
-		void info(Player &pl);
+		void info(Player &pl,bool &gs);
 		void travel(int tmp);
 		void search(Backpack &bp);
 

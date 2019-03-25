@@ -19,28 +19,34 @@ namespace TG
 			std::cout << "XXXXXX" << std::endl;
 			if (_state == States::travel)
 			{
-				_locationMachine.info(_player);
-				std::cin >> a;
-				if ( a == 'p' )
+				_locationMachine.info(_player, _gameOver);
+				if (_gameOver == 0)
 				{
-					_state = States::player;
+					std::cin >> a;
+					if (a == 'p')
+					{
+						_state = States::player;
+					}
+					else if (a == 's')
+					{
+						_locationMachine.search(_player.getBackpack());
+					}
+					else _locationMachine.travel((int)a - 48);
 				}
-				else if (a == 's')
-				{
-					_locationMachine.search(_player.getBackpack());
-				}
-				else _locationMachine.travel((int)a - 48 );
 			}
 			else if (_state == States::player)
 			{
 				_player.info();
 				_player.opcions();
-				std::cin >> a;
-				if (a == 't')
+				if (_gameOver == 0)
 				{
-					_state = States::travel;
+					std::cin >> a;
+					if (a == 't')
+					{
+						_state = States::travel;
+					}
+					else _player.manage(a);
 				}
-				else _player.manage(a);
 			}
 		}
 	}

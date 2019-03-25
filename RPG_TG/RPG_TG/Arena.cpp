@@ -19,24 +19,45 @@ namespace TG
 	void Arena::fight(Player &pl)
 	{
 		int tmp;
-		system("cls");
+		//system("cls");
 
 		while (!_enemies.empty() && pl.getStatistics().getHp() > 0 )
 		{
-			// tura graacza 
+
 			for (unsigned int i = 1; i <= _enemies.size(); i++)
 			{
-				std::cout << i << " -> " << _enemies[i - 1].getStatistics().getName() << " ";
+				std::cout << i << " -> " << _enemies[i - 1].getStatistics().getName() << "\n" ;
 				_enemies[i - 1].getStatistics().info();
 			}
 
+			// tura graacza 
 			pl.getStatistics().info();
-			std::cout << "Atakujesz: ";
+			std::cout << "Opcje: " << std::endl;
+			std::cout << "a -> atak " << std::endl;
+			std::cout << "e -> ekwipunek " << std::endl << std::endl;
 
-			std::cin >> tmp;
-			
-			_enemies[tmp - 1].getStatistics().updateHP(-1 * pl.getStatistics().getDamage());
-			if ( _enemies[tmp - 1].getStatistics().getHp() <= 0 ) _enemies.erase(_enemies.begin() + tmp - 1);
+			char a;
+			do
+			{
+				std::cin >> a;
+			} while (a != 'a' && a != 'e');
+
+
+			if (a == 'a')
+			{
+				std::cout << "Atakujesz: ";
+				std::cin >> tmp;
+
+				_enemies[tmp - 1].getStatistics().updateHP(-1 * pl.getStatistics().getDamage());
+				if (_enemies[tmp - 1].getStatistics().getHp() <= 0) _enemies.erase(_enemies.begin() + tmp - 1);
+			}
+			if (a == 'e')
+			{
+				pl.opcions2();
+				char b;
+				std::cin >> b;
+				pl.manage(b);
+			}
 
 			// tura mobków
 
@@ -47,6 +68,6 @@ namespace TG
 			}
 			std::cout << std::endl;
 		}
-		system("cls");
+		//system("cls");
 	}
 }

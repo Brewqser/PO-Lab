@@ -18,14 +18,10 @@ namespace TG
 		std::cout << "Nagle s³yszysz dziwne dŸwiêki dobiekaj¹ce z piwnicy." << std::endl;
 		std::cout << "Zdezoriêtowany wstajesz i przypominasz sobie," << std::endl;
 		std::cout << "¿e masz schowanie gdzieœ w domu coœ w razie takiej sytu³acji." << std::endl << std::endl;
-		std::cout << "Sterowanie ( obowi¹zuje 'globalnie'):" << std::endl;
-		std::cout << "t - menu porusznia" << std::endl;
-		std::cout << "p - menu postaci" << std::endl;
-		std::cout << "s - przeszukanie danej lokacji" << std::endl;
-		std::cout << "inne cyfry i znaki - przemieszcanie siê po menu/ lokacjach / itp." << std::endl << std::endl;
+		std::cout << "Sterowanie: cyfry i znaki zgodnie z przypisanym znaczeniem." << std::endl << std::endl;
 	}
 
-	void LocationMachine::info(Player &pl)
+	void LocationMachine::info(Player &pl,bool &gs)
 	{
 		if (_location == Locations::Bedroom)
 		{
@@ -126,10 +122,14 @@ namespace TG
 				// Arena;
 				std::cout << "Nartafiasz na 3 szczury." << std::endl << std::endl;
 				Arena(pl,3);
-
+				if (pl.getStatistics().getHp() <= 0)
+				{
+					gs = 1;
+					std::cout << "Game Over" << std::endl << std::endl;
+				}
 				_search[Locations::Basemant] = 1;
 			}
-			if (_search[Locations::Basemant] == 1)
+			if (_search[Locations::Basemant] == 1 && gs == 0)
 			{
 				std::cout << "Pokona³eœ szczury" << std::endl;
 				std::cout << "Dziwne dŸwiêki nasilaj¹ siê!?" << std::endl;
@@ -142,7 +142,14 @@ namespace TG
 				//std::cout << "Czujesz potê¿ny, k³uj¹cy bul w klatce piersiowej." << std::endl;
 				//std::cout << "Umierasz ...... " << std::endl;
 				std::cout << "Happy End" << std::endl << std::endl;
+				gs = 1;
 			}
+		}
+		
+		if (gs == 0 && _location != Locations::Basemant)
+		{
+			std::cout << "p - menu postaci" << std::endl;
+			std::cout << "s - przeszukanie danej lokacji" << std::endl << std::endl;
 		}
 	}
 
