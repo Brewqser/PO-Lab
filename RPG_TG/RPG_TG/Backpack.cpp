@@ -7,168 +7,150 @@ namespace TG
 {
 	Backpack::Backpack()
 	{
-		_maxcapacity = 10;
-		_capacity = 0;
-		_overweigth = false;
+		_freeWeigth = 10;
 	}
 
-	Backpack::Backpack(int maxcapacity)
+	Backpack::Backpack(int freeWeigth)
 	{
-		_maxcapacity = maxcapacity;
-		_capacity = 0;
-		_overweigth = false;
+		_freeWeigth = freeWeigth;
 	}
 
 	void Backpack::info()
 	{
-		std::cout << "Plecak posiada " << _maxcapacity << " pojemnosci" << std::endl;
-		std::cout << "Obecnie jest zajête " << _capacity  << std::endl;
+		std::cout << "W plecaku zmieœci sie jeszcze  " << _freeWeigth << " wagi." << std::endl << std::endl;
 
 		if (_items.size() != 0)
 		{
-			std::cout << std::endl << "Przedmioty:" << std::endl;
+			std::cout <<  "Przedmioty:" << std::endl;
 			for (unsigned int i = 0; i < _items.size(); i++)
 			{
 				_items[i].info();
 			}
+			std::cout << std::endl;
 		}
 
 		if (_weapons.size() != 0)
 		{
-			std::cout << std::endl << "Bronie:" << std::endl;
+			std::cout <<  "Bronie:" << std::endl;
 			for (unsigned int i = 0; i < _weapons.size(); i++)
 			{
 				_weapons[i].info();
 			}
+
+			std::cout << std::endl;
 		}
-		std::cout << std::endl;
 	}
 
-	void Backpack::add(Weapon w)
+	bool Backpack::add(Weapon w)
 	{
-		_capacity += w.getWeight();
-		_weapons.push_back(w);
-		this->checkOverWeigth();
+		if (w.getWeight() <= _freeWeigth)
+		{
+			std::cout << "Do plecaka dodano " << w.getName() << std::endl << std::endl;
+			_weapons.push_back(w);
+			_freeWeigth -= w.getWeight();
+			return 1;
+		}
+		else
+		{
+			std::cout << "Za ma³o miejsca w plecaku. Musisz zwolniæ co najmniej " << w.getWeight() - _freeWeigth << " wagi."<< std::endl << std::endl;
+			return 0;
+		}
+
+		return 0;
 	}
 
-	void Backpack::add(Item i)
+	bool Backpack::add(Item i)
 	{
-		_capacity += i.getWeight();
-		_items.push_back(i);
-		this->checkOverWeigth();
+		if (i.getWeight() <= _freeWeigth)
+		{
+			std::cout << "Do plecaka dodano " << i.getName() << std::endl << std::endl;
+			_items.push_back(i);
+			_freeWeigth -= i.getWeight();
+			return 1;
+		}
+		else
+		{
+			std::cout << "Za ma³o miejsca w plecaku. Musisz zwolniæ co najmniej " << i.getWeight() - _freeWeigth << " wagi." << std::endl << std::endl;
+			return 0;
+		}
+
+		return 0;
 	}
 
-	void Backpack::itemRemove()
+	void Backpack::remove()
 	{
-		std::cout << "0 -> powrót" << std::endl;
+		std::cout << "Co chcesz usun¹æ: "  << std::endl;
+		std::cout << "0 -> nic " << std::endl;
 		for (unsigned int i = 0; i < _items.size(); i++)
 		{
 			std::cout << i + 1 << " -> ";
 			_items[i].info();
 		}
-		int a;
-
-		do
-		{
-			std::cin >> a;
-		} while (a < 0 || a > (int)_items.size());
-
-		if (a != 0)
-		{
-			_capacity -= _items[a - 1].getWeight();
-			_items.erase(_items.begin() + a - 1);
-		}
-	}
-
-	void Backpack::weaponRemove()
-	{
-		std::cout << "0 -> powrót" << std::endl;
 		for (unsigned int i = 0; i < _weapons.size(); i++)
 		{
-			std::cout << i + 1 << " -> ";
+			std::cout << i + _items.size() + 1 << " -> ";
 			_weapons[i].info();
 		}
-		int a;
+		std::cout << std::endl;
+
+
+		int tmp;
 		do
 		{
-			std::cin >> a;
-		} while (a < 0 || a > (int)_weapons.size());
+			std::cin >> tmp;
+		} while (tmp < 0 || tmp > _items.size() + _weapons.size());
 
-		if (a != 0)
+
+		if (tmp != 0)
 		{
-			_capacity -= _weapons[a - 1].getWeight();
-			_weapons.erase(_weapons.begin() + a - 1);
+			tmp--;
+			if (tmp < _items.size())
+			{
+				_freeWeigth += _items[tmp].getWeight();
+				_items.erase(_items.begin() + tmp);
+			}
+			else
+			{
+				tmp -= (int) _items.size();
+				_freeWeigth += _weapons[tmp].getWeight();
+				_weapons.erase(_weapons.begin() + tmp);
+			}
 		}
 	}
 
 	void Backpack::manage()
 	{
-		std::cout << "Opcje: " << std::endl;
-		std::cout << "0 -> powrót" << std::endl;
-		std::cout << "1 -> wyrzuæ przedmiot" << std::endl;
-		std::cout << "2 -> wyrzuæ broñ" << std::endl;
-		int a;
-		std::cin >> a;
-		if (a == 1) this->itemRemove();
-		if (a == 2) this->weaponRemove();
-	}
+		std::cout << "Otwierasz plecak co robisz: " << std::endl;
+		std::cout << "0 -> nic " << std::endl;
+		std::cout << "1 -> przegl¹dam plecak " << std::endl;
+		std::cout << "2 -> zwalniam miejsce " << std::endl;
 
-	void Backpack::handleOverWeigth()
-	{
-		while (_overweigth == true)
+		int tmp;
+		do
 		{
-			std::cout << "Jestes przeci¹¿ony musisz zwolniæ miejsce." << std::endl;
-			std::cout << "Obecnie jest zajête " << _capacity <<  " / " << _maxcapacity << std::endl;
-			std::cout << "Wybierz co chcesz usun¹æ." << std::endl << std::endl;
-			std::cout << "1 -> item" << std::endl;
-			std::cout << "2 -> broñ" << std::endl;
+			std::cin >> tmp;
+		} while (tmp < 0 || tmp > 2);
 
-			int a;
-			std::cin >> a;
-
-			if (a == 1) this->itemRemove();
-			if (a == 2) this->weaponRemove();
-
-			this->checkOverWeigth();
+		if (tmp == 1)
+		{
+			this->info();
+		}
+		if (tmp == 2)
+		{
+			this->remove();
 		}
 	}
 
-	void Backpack::checkOverWeigth()
+	void Backpack::setFreeWeigth(int f)
 	{
-		if (_capacity > _maxcapacity) _overweigth = true;
-		else _overweigth = false;
+		_freeWeigth = f;
 	}
 
-	void Backpack::clearItems()
+	int Backpack::getFreeWeigth()
 	{
-		_items.clear();
+		return _freeWeigth;
 	}
-
-	void Backpack::clearWeapons()
-	{
-		_weapons.clear();
-	}
-
-	void Backpack::setMaxCapacity(int m)
-	{
-		_maxcapacity = m;
-	}
-
-	void Backpack::setOverWeigth(bool o)
-	{
-		_overweigth = o;
-	}
-
-	int Backpack::getMaxCapacity()
-	{
-		return _maxcapacity;
-	}
-
-	bool Backpack::getOverWeigth()
-	{
-		return _overweigth;
-	}
-
+	
 	std::vector < Item > &Backpack::getItems()
 	{
 		return _items;

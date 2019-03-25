@@ -14,46 +14,36 @@ namespace TG
 	{
 		char a;
 
-		while (_gameOver == 0)
+		while (_gameRun)
 		{
-			std::cout << "XXXXXX" << std::endl;
-			if (_state == States::travel)
+			switch (_state)
 			{
-				_locationMachine.info(_player, _gameOver);
-				if (_gameOver == 0)
+			case States::travel:
+				_locationMachine.info(_player,_gameRun);
+				if (_gameRun)
 				{
-					std::cin >> a;
-					if (a == 'p')
-					{
-						_state = States::player;
-					}
-					else if (a == 's')
-					{
-						_locationMachine.search(_player.getBackpack());
-					}
-					else _locationMachine.travel((int)a - 48);
+					_locationMachine.manage(_state, _player.getBackpack());
+					std::cout << "////////////////////////////////////////////////////////////////////////////" << std::endl;
 				}
-			}
-			else if (_state == States::player)
-			{
+
+				break;
+				
+			case States::player:
 				_player.info();
-				_player.opcions();
-				if (_gameOver == 0)
-				{
-					std::cin >> a;
-					if (a == 't')
-					{
-						_state = States::travel;
-					}
-					else _player.manage(a);
-				}
+				_player.manage(_state, _gameRun);
+				if (_gameRun) std::cout << "////////////////////////////////////////////////////////////////////////////" << std::endl;
 			}
+		}
+
+		if (_locationMachine.getState()[Locations::Basemant] != 2)
+		{
+			std::cout << "GAME OVER" << std::endl;
 		}
 	}
 
 	Engine::Engine() : _locationMachine(), _player()
 	{
-		_gameOver = 0;
+		_gameRun = 1;
 		_state = States::travel;
 	}
 

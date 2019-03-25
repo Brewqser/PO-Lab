@@ -11,125 +11,102 @@ namespace TG
 		_location = Locations::Bedroom;
 		for (int i = 0; i < amountOfLocations; i++)
 		{
-			_search.push_back(0);
+			_state.push_back(0);
 		}
 
-		std::cout << "Budzisz siÍ w swoim ≥Ûøku." << std::endl;
+		std::cout << "Budzisz siÍ ranny w swoim ≥Ûøku." << std::endl;
 		std::cout << "Nagle s≥yszysz dziwne düwiÍki dobiekajπce z piwnicy." << std::endl;
 		std::cout << "ZdezoriÍtowany wstajesz i przypominasz sobie," << std::endl;
 		std::cout << "øe masz schowanie gdzieú w domu coú w razie takiej sytu≥acji." << std::endl << std::endl;
-		std::cout << "Sterowanie: cyfry i znaki zgodnie z przypisanym znaczeniem." << std::endl << std::endl;
+		std::cout << "Sterowanie: cyfry zgodnie z przypisanym znaczeniem." << std::endl << std::endl;
 	}
 
-	void LocationMachine::info(Player &pl,bool &gs)
+	void LocationMachine::info(Player &pl,bool &gr)
 	{
-		if (_location == Locations::Bedroom)
+		switch (_location)
 		{
+		case Locations::Bedroom:
 			std::cout << "Stajesz ko≥o ≥Ûøka i rozglπdasz siÍ." << std::endl;
 			std::cout << "Za tobπ znajduje sie szafka nocna." << std::endl;
 			std::cout << "Na przeciwko wejúcia wisi ogromne lustro" << std::endl;
 			std::cout << "Twojπ uwagÍ przykuwa takøe gazeta wystajπca spod ≥Ûøka." << std::endl;
 			std::cout << std::endl;
-			std::cout << "1 -> Idü do kuchnii" << std::endl;
-			std::cout << "2 -> Idü do garaøu" << std::endl;
-			std::cout << "3 -> Idü na strych" << std::endl;
-			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
-		}
+			break;
 
-		if (_location == Locations::Kitchen)
-		{
-			if (_search[Locations::Kitchen] == 0)
+		case Locations::Kitchen:
+			if (_state[Locations::Kitchen] == 0)
 			{
 				std::cout << "Kuchnia wyglπda inaczej niø zwykle." << std::endl;
 				std::cout << "Jednakowoø nic nie wydaje siÍ wychodziÊ poza schemat" << std::endl;
 				std::cout << "Na kuchence po≥oøony jest garczek" << std::endl;
 				std::cout << "Na ladzie ko≥o kuchenki widzisz krÛtki, ale ostry nÛø" << std::endl << std::endl;
 			}
-			if (_search[Locations::Kitchen] == 1)
+			if (_state[Locations::Kitchen] == 1)
 			{
 				std::cout << "Kuchnia wyglπda inaczej niø zwykle." << std::endl;
 				std::cout << "Jednakowoø nic nie wydaje siÍ wychodziÊ poza schemat" << std::endl;
 				std::cout << "Na ladzie ko≥o kuchenki widzisz krÛtki, ale ostry nÛø" << std::endl << std::endl;
 			}
-			if (_search[Locations::Kitchen] == 2)
+			if (_state[Locations::Kitchen] == 2)
 			{
 				std::cout << "Kuchnia wyglπda inaczej niø zwykle." << std::endl;
 				std::cout << "Jednakowoø nic nie wydaje siÍ wychodziÊ poza schemat" << std::endl;
 				std::cout << "Na kuchence po≥oøony jest garczek" << std::endl << std::endl;
 			}
-			if (_search[Locations::Kitchen] == 3)
+			if (_state[Locations::Kitchen] == 3)
 			{
 				std::cout << "Kuchnia wyglπda inaczej niø zwykle." << std::endl;
 				std::cout << "Jednakowoø nic nie wydaje siÍ wychodziÊ poza schemat" << std::endl << std::endl;
-
 			}
-			std::cout << "1 -> Idü do sypialni" << std::endl;
-			std::cout << "2 -> Idü do garaøu" << std::endl;
-			std::cout << "3 -> Idü na strych" << std::endl;
-			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
 
-		}
+			break;
 
-		if (_location == Locations::Garage)
-		{
+		case Locations::Garage:
+
 			std::cout << "Garaø jak garaø nic tu nie ma oprÛcz wypasionego samochodu" << std::endl;
 			std::cout << "A przynajmniej narazie xd." << std::endl << std::endl;
+			break;
 
-			std::cout << "1 -> Idü do kuchnii" << std::endl;
-			std::cout << "2 -> Idü do sypialni" << std::endl;
-			std::cout << "3 -> Idü na strych" << std::endl;
-			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
-		}
-
-		if (_location == Locations::Attic)
-		{
-			
-			if (_search[Locations::Attic] == 0)
+		case Locations::Attic:
+			if (_state[Locations::Attic] == 0)
 			{
 				std::cout << "Wychodzisz po stromych, skrzypiπcych schodach, ktÛre ledwo" << std::endl;
 				std::cout << "ale jednak wytrzymujπ twÛj ciÍøar." << std::endl;
 				std::cout << "Podnoszπc wie coraz wyøej spoglπdasz na stary fortepian." << std::endl;
 				std::cout << "Jednak przez przypadek kierujesz wzrok na inne úmieci ktÛre tam leøπ." << std::endl << std::endl;
 			}
-			if (_search[Locations::Attic] == 1)
+			if (_state[Locations::Attic] == 1)
 			{
 				std::cout << "Wychodzisz po stromych, skrzypiπcych schodach, ktÛre ledwo" << std::endl;
 				std::cout << "ale jednak wytrzymujπ twÛj ciÍøar." << std::endl;
 				std::cout << "Jednak przez przypadek kierujesz wzrok na inne úmieci ktÛre tam leøπ." << std::endl << std::endl;
 			}
-			if (_search[Locations::Attic] == 2)
+			if (_state[Locations::Attic] == 2)
 			{
 				std::cout << "Wychodzisz po stromych, skrzypiπcych schodach, ktÛre ledwo" << std::endl;
 				std::cout << "ale jednak wytrzymujπ twÛj ciÍøar." << std::endl;
 				std::cout << "Podnoszπc sie coraz wyøej spoglπdasz na stary fortepian." << std::endl << std::endl;
 			}
-			if (_search[Locations::Attic] == 3)
+			if (_state[Locations::Attic] == 3)
 			{
 				std::cout << "Wychodzisz po stromych, skrzypiπcych schodach, ktÛre ledwo" << std::endl;
 				std::cout << "ale jednak wytrzymujπ twÛj ciÍøar." << std::endl << std::endl;
 			}
 
-			std::cout << "1 -> Idü do kuchnii" << std::endl;
-			std::cout << "2 -> Idü do garaøu" << std::endl;
-			std::cout << "3 -> Idü na sypialni" << std::endl;
-			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
-		}
+			break;
 
-		if (_location == Locations::Basemant)
-		{
-			if (_search[Locations::Basemant] == 0)
+		case Locations::Basemant:
+			if (_state[Locations::Basemant] == 0)
 			{
-				// Arena;
 				std::cout << "Nartafiasz na 3 szczury." << std::endl << std::endl;
-				Arena(pl,3);
+				Arena(pl,3,gr);
 				if (pl.getStatistics().getHp() <= 0)
 				{
-					gs = 1;
-					std::cout << "Game Over" << std::endl << std::endl;
+					gr = 0;
 				}
-				_search[Locations::Basemant] = 1;
+				_state[Locations::Basemant] = 1;
 			}
-			if (_search[Locations::Basemant] == 1 && gs == 0)
+			if (_state[Locations::Basemant] == 1 && gr == 1)
 			{
 				std::cout << "Pokona≥eú szczury" << std::endl;
 				std::cout << "Dziwne düwiÍki nasilajπ siÍ!?" << std::endl;
@@ -142,186 +119,271 @@ namespace TG
 				//std::cout << "Czujesz potÍøny, k≥ujπcy bul w klatce piersiowej." << std::endl;
 				//std::cout << "Umierasz ...... " << std::endl;
 				std::cout << "Happy End" << std::endl << std::endl;
-				gs = 1;
+				_state[Locations::Basemant] = 2;
+				gr = 0;
 			}
-		}
-		
-		if (gs == 0 && _location != Locations::Basemant)
-		{
-			std::cout << "p - menu postaci" << std::endl;
-			std::cout << "s - przeszukanie danej lokacji" << std::endl << std::endl;
 		}
 	}
 
-	void LocationMachine::travel(int tmp)
+	void LocationMachine::manage(States &s ,Backpack &bp)
 	{
-		//std::cout << tmp << std::endl;
-		if (_location == Locations::Bedroom)
+		std::cout << "Opcje: " << std::endl;
+		std::cout << "1 -> prouszanie" << std::endl;
+		std::cout << "2 -> przeszukaj lokacje" << std::endl;
+		std::cout << "3 -> menu postaci" << std::endl;
+
+		int tmp;
+		do
 		{
+			std::cin >> tmp;
+		} while (tmp < 1 || tmp > 3);
+
+		if (tmp == 1)
+		{
+			this->travel();
+		}
+		if (tmp == 2)
+		{
+			this->search(bp);
+		}
+		if (tmp == 3)
+		{
+			s = States::player;
+		}
+	}
+
+	void LocationMachine::travel()
+	{
+		int tmp;
+		switch (_location)
+		{
+		case Locations::Bedroom:
+			std::cout << "1 -> Idü do kuchnii" << std::endl;
+			std::cout << "2 -> Idü do garaøu" << std::endl;
+			std::cout << "3 -> Idü na strych" << std::endl;
+			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
+
+			do
+			{
+				std::cin >> tmp;
+			} while (tmp < 1 || tmp > 4);
+
 			if (tmp == 1) _location = Locations::Kitchen;
 			if (tmp == 2) _location = Locations::Garage;
 			if (tmp == 3) _location = Locations::Attic;
 			if (tmp == 4) _location = Locations::Basemant;
+			break;
 
-		}
-		else if (_location == Locations::Kitchen)
-		{
+		case Locations::Kitchen:
+			std::cout << "1 -> Idü do sypialni" << std::endl;
+			std::cout << "2 -> Idü do garaøu" << std::endl;
+			std::cout << "3 -> Idü na strych" << std::endl;
+			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
+
+			do
+			{
+				std::cin >> tmp;
+			} while (tmp < 1 || tmp > 4);
+
 			if (tmp == 1) _location = Locations::Bedroom;
 			if (tmp == 2) _location = Locations::Garage;
 			if (tmp == 3) _location = Locations::Attic;
 			if (tmp == 4) _location = Locations::Basemant;
-		}
-		else if (_location == Locations::Garage)
-		{
+			break;
+
+		case Locations::Garage:
+			std::cout << "1 -> Idü do kuchnii" << std::endl;
+			std::cout << "2 -> Idü do sypialni" << std::endl;
+			std::cout << "3 -> Idü na strych" << std::endl;
+			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
+
+			do
+			{
+				std::cin >> tmp;
+			} while (tmp < 1 || tmp > 4);
+
 			if (tmp == 1) _location = Locations::Kitchen;
 			if (tmp == 2) _location = Locations::Bedroom;
 			if (tmp == 3) _location = Locations::Attic;
 			if (tmp == 4) _location = Locations::Basemant;
-		}
-		else if (_location == Locations::Attic)
-		{
+			break;
+
+		case Locations::Attic:
+			std::cout << "1 -> Idü do kuchnii" << std::endl;
+			std::cout << "2 -> Idü do garaøu" << std::endl;
+			std::cout << "3 -> Idü na sypialni" << std::endl;
+			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
+
+			do
+			{
+				std::cin >> tmp;
+			} while (tmp < 1 || tmp > 4);
+
 			if (tmp == 1) _location = Locations::Kitchen;
 			if (tmp == 2) _location = Locations::Garage;
 			if (tmp == 3) _location = Locations::Bedroom;
 			if (tmp == 4) _location = Locations::Basemant;
-		}
-		/*
-		if( _location == Locations::Basemant)
-		{
-			if (tmp == 1) _location = Locations::Kitchen;
-			if (tmp == 2) _location = Locations::Garage;
-			if (tmp == 3) _location = Locations::Attic;
-			if (tmp == 4) _location = Locations::Bedroom;
-		}
-		*/
+			break;
 
-		///std::cout << _location << std::endl;
+		}
 	}
 
 	void LocationMachine::search(Backpack &bp)
 	{
-		if (_location == Locations::Bedroom)
+		int tmp;
+		Weapon w1("NÛø kuchenny", 5, 2);
+		Weapon w2("Pokrywka", 2, 2);
+		Item i1("Stary Bandaø", 3, 2);
+		Item i2("Bandaø", 5, 2);
+
+		switch (_location)
 		{
+		case Locations::Bedroom:
 			std::cout << "Nic nie znajdujesz." << std::endl << std::endl;
-		}
+			break;
 
-		if (_location == Locations::Kitchen)
-		{
-			if (_search[Locations::Kitchen] == 0)
+		case Locations::Kitchen:
+			switch (_state[Locations::Kitchen])
 			{
+			case 0:
 				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "1 -> NÛø kuchenny" <<  std::endl;
-				std::cout << "2 -> Pokrywka" << std::endl  << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ) : ";
-				int a;
-				std::cin >> a;
-				if (a == 1)
+				std::cout << "-NÛø kuchenny" << std::endl;
+				std::cout << "-Pokrywka" << std::endl;
+				std::cout << "Co bierzesz: " << std::endl;
+				std::cout << "0 -> nic" << std::endl;
+				std::cout << "1 -> ";
+				w1.info();
+				std::cout << "2 -> ";
+				w2.info();
+				do
 				{
-					bp.add(Weapon("NÛø kuchenny", 5, 2));
-					_search[Locations::Kitchen] = 2;
-				}
-				if (a == 2)
+					std::cin >> tmp;
+				} while (tmp < 0 || tmp > 2);
+
+				if (tmp == 1)
 				{
-					bp.add(Weapon("Pokrywka", 2, 2));
-					_search[Locations::Kitchen] = 1;
+					if (bp.add(w1)) _state[Locations::Kitchen] = 2;
 				}
-			}
-			else if (_search[Locations::Kitchen] == 1)
-			{
+				if (tmp == 2)
+				{
+					if (bp.add(w2)) _state[Locations::Kitchen] = 1;
+				}
+
+				break;
+
+			case 1:
 				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "1 -> NÛø kuchenny" << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ): ";
-				int a;
-				std::cin >> a;
-				if (a == 1)
+				std::cout << "-NÛø kuchenny" << std::endl;
+				std::cout << "Co bierzesz ( 0 -> nic ): " << std::endl;
+				std::cout << "1 -> ";
+				w1.info();
+				do
 				{
-					bp.add(Weapon("NÛø kuchenny", 5, 2));
-					_search[Locations::Kitchen] = 3;
-				}
-			}
-			else if (_search[Locations::Kitchen] == 2)
-			{
-				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "1 -> Pokrywka"  << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ) : ";
-				int a;
-				std::cin >> a;
-				if (a == 1)
+					std::cin >> tmp;
+				} while (tmp < 0 || tmp > 1);
+
+				if (tmp == 1)
 				{
-					bp.add(Weapon("Pokrywka", 2, 2));
-					_search[Locations::Kitchen] = 3;
+					if (bp.add(w1)) _state[Locations::Kitchen] = 3;
 				}
-			}
-			else if (_search[Locations::Kitchen] == 3)
-			{
+				break;
+
+			case 2:
+				std::cout << "Znajdujesz:" << std::endl; 
+				std::cout << "-Pokrywka" << std::endl;
+				std::cout << "Co bierzesz ( 0 -> nic ): " << std::endl;
+				std::cout << "1 -> ";
+				w2.info();
+				do
+				{
+					std::cin >> tmp;
+				} while (tmp < 0 || tmp > 1);
+
+				if (tmp == 1)
+				{
+					if (bp.add(w2)) _state[Locations::Kitchen] = 3;
+				}
+				break;
+
+			case 3:
 				std::cout << "Nic nie znajdujesz." << std::endl << std::endl;
+				break;
 			}
 
-		}
+			break;
 
-		if (_location == Locations::Garage)
-		{
+		case Locations::Garage:
 			std::cout << "Nic nie znajdujesz." << std::endl << std::endl;
-		}
+			break;
 
-		if (_location == Locations::Attic)
-		{
-			if (_search[Locations::Attic] == 0)
+		case Locations::Attic:
+			switch (_state[Locations::Attic])
 			{
+			case 0:
 				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "1 -> Stary Bandaø" << std::endl;
-				std::cout << "2 -> Bandaø" << std::endl  << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ) : ";
-				int a;
-				std::cin >> a;
-				if (a == 1)
+				std::cout << "-Stary Bandaø" << std::endl;
+				std::cout << "-Bandaø" << std::endl;
+				std::cout << "Co bierzesz: " << std::endl;
+				std::cout << "0 -> nic" << std::endl;
+				std::cout << "1 -> ";
+				i1.info();
+				std::cout << "2 -> ";
+				i2.info();
+				do
 				{
-					bp.add(Item("Stary Bandaø",3,2));
-					_search[Locations::Attic] = 2;
-				}
-				if (a == 2)
+					std::cin >> tmp;
+				} while (tmp < 0 || tmp > 2);
+
+				if (tmp == 1)
 				{
-					bp.add(Item("Bandaø", 5, 2));
-					_search[Locations::Attic] = 1;
+					if (bp.add(i1)) _state[Locations::Attic] = 2;
 				}
-			}
-			else if (_search[Locations::Attic] == 1)
-			{
+				if (tmp == 2)
+				{
+					if (bp.add(i2)) _state[Locations::Attic] = 1;
+				}
+
+				break;
+
+			case 1:
 				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "1 -> Stary Bandaø"  << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ) : ";
-				int a;
-				std::cin >> a;
-				if (a == 1)
+				std::cout << "-Stary Bandaø" << std::endl;
+				std::cout << "Co bierzesz ( 0 -> nic ): " << std::endl;
+				std::cout << "1 -> ";
+				i1.info();
+				do
 				{
-					bp.add(Item("Stary Bandaø", 3, 2));
-					_search[Locations::Attic] = 3;
+					std::cin >> tmp;
+				} while (tmp < 0 || tmp > 1);
+
+				if (tmp == 1)
+				{
+					if (bp.add(i1)) _state[Locations::Attic] = 3;
 				}
-			}
-			else if (_search[Locations::Attic] == 2)
-			{
+				break;
+
+			case 2:
 				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "1 -> Bandaø" << std::endl << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ) : ";
-				int a;
-				std::cin >> a;
-				if (a == 1)
+				std::cout << "-Bandaø" << std::endl;
+				std::cout << "Co bierzesz ( 0 -> nic ): " << std::endl;
+				std::cout << "1 -> ";
+				i2.info();
+				do
 				{
-					bp.add(Weapon("Bandaø", 5, 2));
-					_search[Locations::Attic] = 3;
+					std::cin >> tmp;
+				} while (tmp < 0 || tmp > 1);
+
+				if (tmp == 1)
+				{
+					if (bp.add(i2)) _state[Locations::Attic] = 3;
 				}
-			}
-			else if (_search[Locations::Attic] == 3)
-			{
+				break;
+
+			case 3:
 				std::cout << "Nic nie znajdujesz." << std::endl << std::endl;
+				break;
 			}
 		}
-		/*
-		if (_location == Locations::Basemant)
-		{
-
-		}
-		*/
 	}
 
 	void LocationMachine::setLocation(Locations l)
@@ -329,9 +391,9 @@ namespace TG
 		_location = l;
 	}
 
-	void LocationMachine::setSearch(int s, int i)
+	void LocationMachine::setState(int s, int i)
 	{
-		_search[i] = s;
+		_state[i] = s;
 	}
 
 	Locations LocationMachine::getLocation()
@@ -339,8 +401,9 @@ namespace TG
 		return _location;
 	}
 
-	std::vector <int>  &LocationMachine::getSearch()
+	std::vector <int>  &LocationMachine::getState()
 	{
-		return _search;
+		return _state;
 	}
+
 }

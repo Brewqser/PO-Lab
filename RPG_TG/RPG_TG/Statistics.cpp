@@ -8,36 +8,26 @@ namespace TG
 	{
 		_name = "";
 		_hp = 1;
-		_baseDamage = 1;
-		_damage = _baseDamage;
+		_damage = 1;
 	}
 
-	Statistics::Statistics(int  hp, int baseDamage, std::string name)
+	Statistics::Statistics(int  hp, int damage, std::string name)
 	{
 		_name = name;
 		_hp = hp;
-		_baseDamage = baseDamage;
-		_damage = _baseDamage;
+		_damage = damage;
 	}
 
 	void Statistics::info()
 	{
-		std::cout << "Statystyki";
-		//if (_name != "") std::cout << " " << _name;
-		std::cout << ":" << std::endl;
+		std::cout << "Statystyki:" << std::endl;
 		std::cout << "- HP: " << _hp << std::endl; 
-		std::cout << "- Base_Damage: " << _baseDamage << std::endl;
 		std::cout << "- Damage: " << _damage << std::endl << std::endl;
 	}
 
 	void Statistics::updateHP(int u)
 	{
 		_hp = _hp + u;
-	}
-	
-	void Statistics::updateDamage(int d)
-	{
-		_damage = _baseDamage + d;
 	}
 
 	void Statistics::setName(std::string n)
@@ -50,11 +40,9 @@ namespace TG
 		_hp = h;
 	}
 
-	void Statistics::setBaseDamage(int d)
+	void Statistics::setDamage(int d)
 	{
-		int tmp = _damage - _baseDamage;
-		_baseDamage = d;
-		this->updateDamage(tmp);
+		_damage = d;
 	}
 
 	std::string Statistics::getName()

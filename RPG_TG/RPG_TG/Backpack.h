@@ -10,34 +10,23 @@ namespace TG
 	{
 	public:
 		Backpack();
-		Backpack(int maxcapacity);
+		Backpack(int freeWeigth);
 
 		void info();
 
-		void add(Item i);
-		void add(Weapon w);
-
-		void itemRemove();
-		void weaponRemove();
+		bool add(Item i);
+		bool add(Weapon w);
+		void remove();
 		void manage();
-		void handleOverWeigth();
-		void checkOverWeigth(); // sprawdzian grubasa
 
-		void clearItems();
-		void clearWeapons();
+		void setFreeWeigth(int f);
 
-		void setMaxCapacity(int m);
-		void setOverWeigth(bool o);
-
-		int getMaxCapacity();
-		bool getOverWeigth();
+		int getFreeWeigth();
 		std::vector < Item > &getItems();
 		std::vector < Weapon > &getWeapons();
 
 	private:
-		int _maxcapacity;
-		int _capacity;
-		bool _overweigth;
+		int _freeWeigth;
 		std::vector < Item > _items;
 		std::vector < Weapon > _weapons;
 	};

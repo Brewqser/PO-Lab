@@ -16,6 +16,12 @@ namespace TG
 		_miss = miss;
 	}
 
+	void Enemy::info()
+	{
+		std::cout << _statistics.getName() << std::endl;
+		_statistics.info();
+	}
+
 	void Enemy::attack(Player &pl)
 	{
 		int tmp = rand();
@@ -31,8 +37,18 @@ namespace TG
 		}
 	}
 
+	void Enemy::setMiss(int m)
+	{
+		_miss = m;
+	}
+
 	Statistics &Enemy::getStatistics()
 	{
 		return _statistics;
+	}
+
+	int Enemy::getMiss()
+	{
+		return _miss;
 	}
 }

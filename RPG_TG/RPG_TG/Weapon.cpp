@@ -23,11 +23,11 @@ namespace TG
 	{
 		if (_name != "")
 		{
-			std::cout << "nazwa: " << _name << " (obra¿enia: " << _damage << ", ciê¿ar: " << _weight << ")" <<  std::endl;
+			std::cout << _name << " (obra¿enia: " << _damage << ", ciê¿ar: " << _weight << ")" <<  std::endl;
 		}
 		else
 		{
-			std::cout << "Nie posiadasz wyekwipowanej ¿adnej broni." << std::endl;
+			std::cout << "Brak broni." << std::endl;
 		}
 	}
 	

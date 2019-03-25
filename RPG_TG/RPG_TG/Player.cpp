@@ -4,94 +4,171 @@
 
 namespace TG
 {
-	Player::Player() : _weapon()
+	Player::Player() :_weapon("piêœæ", 1, 0), _statistics(1,1), _backpack()
 	{
 		
+	}
+
+	Player::Player(int hp, int bpsize)
+	{
+		_weapon = Weapon("piêœæ", 1, 0);
+		_statistics = Statistics(hp, _weapon.getDamage());
+		_backpack = Backpack(bpsize);
 	}
 
 	void Player::info()
 	{
 		_statistics.info();
-		std::cout << "Wyekwipowana Broñ -> ";
+		std::cout << "Broñ: ";
 		_weapon.info();
 		std::cout << std::endl;
-		_backpack.info();
 	}
 
-	void Player::opcions()
+	void Player::manage(States &s, bool &gr)
 	{
 		std::cout << "Opcje: " << std::endl;
-		std::cout << "p -> zarz¹dzaj polecakiem" << std::endl;
-		std::cout << "b -> zarz¹dzaj trzyman¹ broni¹" << std::endl;
-		std::cout << "t -> menu porusznia" << std::endl << std::endl;
+		std::cout << "1 -> plecak" << std::endl;
+		std::cout << "2 -> u¿yj przedmiot" << std::endl;
+		std::cout << "3 -> zarz¹daj broni¹" << std::endl;
+		std::cout << "4 -> menu poruszania" << std::endl;
+		std::cout << "9 -> samobójstwo" << std::endl;
+
+		int tmp;
+		do
+		{
+			std::cin >> tmp;
+		} while ((tmp < 1 || tmp > 4 ) && tmp != 9 );
+
+		if (tmp == 1)
+		{
+			_backpack.manage();
+		}
+		if (tmp == 2)
+		{
+			this->useItem();
+		}
+		if (tmp == 3)
+		{
+			this->equipWeapon();
+		}
+		if (tmp == 4)
+		{
+			s = States::travel;
+		}
+		if (tmp == 9)
+		{
+			std::cout << "Pope³niasz samobójstwo" << std::endl;
+			_statistics.setHp(0);
+			gr = 0;
+		}
 	}
 
-	void Player::opcions2()
+	void Player::useItem()
 	{
-		std::cout << "Opcje: " << std::endl;
-		std::cout << "p -> zarz¹dzaj polecakiem" << std::endl;
-		std::cout << "b -> zarz¹dzaj trzyman¹ broni¹" << std::endl << std::endl;
-	}
+		std::vector < Item > &ite = _backpack.getItems();
+		
+		if (ite.size() != 0)
+		{
+			std::cout << "Którego przedmiotu chcesz u¿yæ: " << std::endl;
+			std::cout << "0 -> ¿adnego" << std::endl;
+			for (unsigned int i = 0; i < ite.size(); i++)
+			{
+				std::cout << i + 1 << " -> ";
+				ite[i].info();
+			}
+			std::cout << std::endl;
 
-	void Player::manage(char a)
-	{
-		if (a == 'p') _backpack.manage();
-		if (a == 'b') this->equipWeapon();
+			int tmp;
+			do
+			{
+				std::cin >> tmp;
+			} while (tmp < 0 || tmp > ite.size());
+
+			if (tmp != 0)
+			{
+				tmp--;
+				_statistics.updateHP(ite[tmp].getHpadd());
+				ite.erase(ite.begin() + tmp);
+			}
+			else
+			{
+				std::cout << "Nie u¿yto ¿adnego przedmiotu." << std::endl << std::endl;
+			}
+		}
+		else
+		{
+			std::cout << "Nie posiadasz ¿adnego przedmiotu." << std::endl << std::endl;
+		}
 	}
 
 	void Player::equipWeapon()
 	{
-		std::cout << "Wyekwipowana Broñ -> ";
-		_weapon.info();
-		std::cout << std::endl;
+		std::cout << "Co zamierzasz zrobiæ z posiadan¹ broni¹:" << std::endl;
+		std::cout << "0 -> nic" << std::endl;
+		std::cout << "1 -> schowaj do plecaka" << std::endl;
+		std::cout << "2 -> zmieñ" << std::endl;
 
-		std::vector < Weapon > &wep = _backpack.getWeapons();
-
-		std::cout << "Broneie w plaecaku: " << std::endl;
-		std::cout << "0 -> powrót" << std::endl;
-		std::cout << "1 -> zdejmij" << std::endl;
-		for (unsigned int i = 0; i < wep.size(); i++)
-		{
-			std::cout << i + 2 << " -> ";
-			wep[i].info();
-		}
-		int a;
-
-		std::cout << wep.size() << std::endl;
+		int tmp;
 		do
 		{
-			std::cin >> a;
-		} while (a < 0 || a > (int)wep.size() + 1);
+			std::cin >> tmp;
+		} while (tmp < 0 || tmp > 2);
 
-		if (a != 0)
+		if (tmp == 0)
 		{
-			if (_weapon.getName() == "")
+			std::cout << "Nic nie zrobiono." << std::endl << std::endl;
+		}
+		if (tmp == 1)
+		{
+			if (_weapon.getName() != "piêœæ")
 			{
-				if (a != 1)
+				_backpack.add(_weapon);
+				_weapon = Weapon("piêœæ", 1, 0);
+			}
+			else
+			{
+				std::cout << "Nie mo¿na zdj¹æ piêœci ( xd ) " << std::endl << std::endl;
+			}
+		}
+		if (tmp == 2)
+		{
+			std::vector < Weapon > &wep = _backpack.getWeapons();
+			
+			if (wep.size() != 0)
+			{
+				std::cout << "Na któr¹ broñ chcesz zamieniæ:" << std::endl;
+				std::cout << "0 -> ¿adn¹" << std::endl;
+
+				for (unsigned int i = 0; i < wep.size(); i++)
 				{
-					_weapon = wep[a - 2];
-					wep.erase(wep.begin() + (a - 2));
+					std::cout << i + 1 << " -> ";
+					wep[i].info();
+				}
+				std::cout << std::endl;
+
+				int tmp;
+				do
+				{
+					std::cin >> tmp;
+				} while (tmp < 0 || tmp > wep.size());
+
+				if (tmp != 0)
+				{
+					tmp--;
+					std::swap(_weapon, wep[tmp]);
+					if (wep[tmp].getName() == "piêœæ") wep.erase(wep.begin() + tmp);
 				}
 				else
 				{
-					std::cout << "Nie masz za³o¿onej broni" << std::endl << std::endl;
+					std::cout << "Nie zamieniono broni." << std::endl << std::endl;
 				}
 			}
 			else
 			{
-				if (a == 1)
-				{
-					wep.push_back(_weapon);
-					_weapon = Weapon();
-				}
-				else
-				{
-					std::swap(_weapon, wep[a - 2]);
-				}
+				std::cout << "Nie posiadasz ¿adnej broni w plecaku." << std::endl << std::endl;
 			}
-			//std::cout << wep.size() << std::endl;
 		}
-	
+		_statistics.setDamage(_weapon.getDamage());
 	}
 
 	Statistics &Player::getStatistics()

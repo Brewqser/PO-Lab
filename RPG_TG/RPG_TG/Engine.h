@@ -21,7 +21,7 @@ namespace TG
 		LocationMachine _locationMachine;
 		Player _player;
 		States _state;
-		bool _gameOver;
+		bool _gameRun;
 
 	};
 }

@@ -13,6 +13,7 @@ const int amountOfLocations = 5;
 
 enum States
 {
+	arena,
 	travel,
 	player
 };

@@ -10,9 +10,9 @@ namespace TG
 	class Arena
 	{
 	public:
-		Arena(Player &pl, int n);
+		Arena(Player &pl, int n,bool &gr);
 
-		void fight(Player &pl);
+		void fight(Player &pl,bool &gr);
 
 	private:
 		std::vector <Enemy> _enemies;

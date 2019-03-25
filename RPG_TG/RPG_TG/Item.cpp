@@ -21,11 +21,11 @@ namespace TG
 	{
 		if (_name != "")
 		{
-			std::cout << "nazwa: " << _name << " (leczenie: " << _hpadd << ", ciê¿ar: " << _weight << ")" << std::endl;
+			std::cout << _name << " (leczenie: " << _hpadd << ", ciê¿ar: " << _weight << ")" << std::endl;
 		}
 		else
 		{
-			std::cout << "Przedmiot nie istnieje." << std::endl;
+			std::cout << "Brak przedmiotu." << std::endl;
 		}
 	}
 
