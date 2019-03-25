@@ -277,12 +277,12 @@ namespace TG
 				if (a == 1)
 				{
 					bp.add(Item("Stary Banda¿",3,2));
-					_search[Locations::Kitchen] = 2;
+					_search[Locations::Attic] = 2;
 				}
 				if (a == 2)
 				{
-					bp.add(Weapon("Banda¿", 5, 2));
-					_search[Locations::Kitchen] = 1;
+					bp.add(Item("Banda¿", 5, 2));
+					_search[Locations::Attic] = 1;
 				}
 			}
 			else if (_search[Locations::Attic] == 1)
@@ -295,7 +295,7 @@ namespace TG
 				if (a == 1)
 				{
 					bp.add(Item("Stary Banda¿", 3, 2));
-					_search[Locations::Kitchen] = 3;
+					_search[Locations::Attic] = 3;
 				}
 			}
 			else if (_search[Locations::Attic] == 2)
@@ -308,7 +308,7 @@ namespace TG
 				if (a == 1)
 				{
 					bp.add(Weapon("Banda¿", 5, 2));
-					_search[Locations::Kitchen] = 3;
+					_search[Locations::Attic] = 3;
 				}
 			}
 			else if (_search[Locations::Attic] == 3)

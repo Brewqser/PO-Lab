@@ -54,9 +54,6 @@ namespace TG
 			if (a == 'e')
 			{
 				pl.opcions2();
-				char b;
-				std::cin >> b;
-				pl.manage(b);
 			}
 
 			// tura mobków
