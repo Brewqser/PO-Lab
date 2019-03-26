@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 #include <cstdlib>
-#include <iostream>
+#include "txtManager.h"
 
 namespace TG
 {
@@ -18,8 +18,7 @@ namespace TG
 
 	void Enemy::info()
 	{
-		std::cout << _statistics.getName() << std::endl;
-		_statistics.info();
+		txtManager::getTxtManager().print(this);
 	}
 
 	void Enemy::attack(Player &pl)
@@ -28,11 +27,11 @@ namespace TG
 
 		if (tmp % _miss == 0)
 		{
-			std::cout << "Czeka" << std::endl;
+			txtManager::getTxtManager().print("w8", 1);
 		}
 		else
 		{
-			std::cout << "Attakuje za " << _statistics.getDamage() << std::endl;
+			txtManager::getTxtManager().attack("att", _statistics.getDamage());
 			pl.getStatistics().updateHP(-1 * _statistics.getDamage());
 		}
 	}

@@ -1,6 +1,7 @@
 #include "Engine.h"
 
 #include <iostream>
+#include "txtManager.h"
 
 namespace TG
 {
@@ -23,7 +24,7 @@ namespace TG
 				if (_gameRun)
 				{
 					_locationMachine.manage(_state, _player.getBackpack());
-					std::cout << "////////////////////////////////////////////////////////////////////////////" << std::endl;
+					txtManager::getTxtManager().print("///", 1);
 				}
 
 				break;
@@ -31,13 +32,13 @@ namespace TG
 			case States::player:
 				_player.info();
 				_player.manage(_state, _gameRun);
-				if (_gameRun) std::cout << "////////////////////////////////////////////////////////////////////////////" << std::endl;
+				if (_gameRun)txtManager::getTxtManager().print("///", 1);
 			}
 		}
 
 		if (_locationMachine.getState()[Locations::Basemant] != 2)
 		{
-			std::cout << "GAME OVER" << std::endl;
+			txtManager::getTxtManager().print("go", 1);
 		}
 	}
 

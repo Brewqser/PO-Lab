@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include "txtManager.h"
 
 namespace TG
 {
@@ -17,27 +18,27 @@ namespace TG
 
 	void Backpack::info()
 	{
-		std::cout << "W plecaku zmieœci sie jeszcze  " << _freeWeigth << " wagi." << std::endl << std::endl;
+		txtManager::getTxtManager().print(this);
 
 		if (_items.size() != 0)
 		{
-			std::cout <<  "Przedmioty:" << std::endl;
+			txtManager::getTxtManager().print("it",1);
 			for (unsigned int i = 0; i < _items.size(); i++)
 			{
 				_items[i].info();
 			}
-			std::cout << std::endl;
+			txtManager::getTxtManager().print("endl", 0);
 		}
 
 		if (_weapons.size() != 0)
 		{
-			std::cout <<  "Bronie:" << std::endl;
+			txtManager::getTxtManager().print("wp", 1);
 			for (unsigned int i = 0; i < _weapons.size(); i++)
 			{
 				_weapons[i].info();
 			}
 
-			std::cout << std::endl;
+			txtManager::getTxtManager().print("endl", 0);
 		}
 	}
 
@@ -45,14 +46,17 @@ namespace TG
 	{
 		if (w.getWeight() <= _freeWeigth)
 		{
-			std::cout << "Do plecaka dodano " << w.getName() << std::endl << std::endl;
+			txtManager::getTxtManager().print("addw", 0);
+			Weapon *w1 = &w;
+			txtManager::getTxtManager().print(w1);
+
 			_weapons.push_back(w);
 			_freeWeigth -= w.getWeight();
 			return 1;
 		}
 		else
 		{
-			std::cout << "Za ma³o miejsca w plecaku. Musisz zwolniæ co najmniej " << w.getWeight() - _freeWeigth << " wagi."<< std::endl << std::endl;
+			txtManager::getTxtManager().print("tmc", 1);
 			return 0;
 		}
 
@@ -63,14 +67,17 @@ namespace TG
 	{
 		if (i.getWeight() <= _freeWeigth)
 		{
-			std::cout << "Do plecaka dodano " << i.getName() << std::endl << std::endl;
+			txtManager::getTxtManager().print("addw", 0);
+			Item *i1 = &i;
+			txtManager::getTxtManager().print(i1);
+
 			_items.push_back(i);
 			_freeWeigth -= i.getWeight();
 			return 1;
 		}
 		else
 		{
-			std::cout << "Za ma³o miejsca w plecaku. Musisz zwolniæ co najmniej " << i.getWeight() - _freeWeigth << " wagi." << std::endl << std::endl;
+			txtManager::getTxtManager().print("tmc", 1);
 			return 0;
 		}
 
@@ -79,20 +86,19 @@ namespace TG
 
 	void Backpack::remove()
 	{
-		std::cout << "Co chcesz usun¹æ: "  << std::endl;
-		std::cout << "0 -> nic " << std::endl;
+		txtManager::getTxtManager().print("bpr", 1);
+		
 		for (unsigned int i = 0; i < _items.size(); i++)
 		{
-			std::cout << i + 1 << " -> ";
+			txtManager::getTxtManager().print(i + 1, 0);
 			_items[i].info();
 		}
 		for (unsigned int i = 0; i < _weapons.size(); i++)
 		{
-			std::cout << i + _items.size() + 1 << " -> ";
+			txtManager::getTxtManager().print(i + _items.size() + 1, 0);
 			_weapons[i].info();
 		}
-		std::cout << std::endl;
-
+		txtManager::getTxtManager().print(" ", 0);
 
 		int tmp;
 		do
@@ -120,10 +126,7 @@ namespace TG
 
 	void Backpack::manage()
 	{
-		std::cout << "Otwierasz plecak co robisz: " << std::endl;
-		std::cout << "0 -> nic " << std::endl;
-		std::cout << "1 -> przegl¹dam plecak " << std::endl;
-		std::cout << "2 -> zwalniam miejsce " << std::endl;
+		txtManager::getTxtManager().print("bpm", 1);
 
 		int tmp;
 		do

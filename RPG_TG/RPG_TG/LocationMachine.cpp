@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "Arena.h"
+#include "txtManager.h"
 
 namespace TG
 {
@@ -14,11 +15,7 @@ namespace TG
 			_state.push_back(0);
 		}
 
-		std::cout << "Budzisz siÍ ranny w swoim ≥Ûøku." << std::endl;
-		std::cout << "Nagle s≥yszysz dziwne düwiÍki dobiekajπce z piwnicy." << std::endl;
-		std::cout << "ZdezoriÍtowany wstajesz i przypominasz sobie," << std::endl;
-		std::cout << "øe masz schowanie gdzieú w domu coú w razie takiej sytu≥acji." << std::endl << std::endl;
-		std::cout << "Sterowanie: cyfry zgodnie z przypisanym znaczeniem." << std::endl << std::endl;
+		txtManager::getTxtManager().print("start", 1);
 	}
 
 	void LocationMachine::info(Player &pl,bool &gr)
@@ -26,71 +23,60 @@ namespace TG
 		switch (_location)
 		{
 		case Locations::Bedroom:
-			std::cout << "Stajesz ko≥o ≥Ûøka i rozglπdasz siÍ." << std::endl;
-			std::cout << "Za tobπ znajduje sie szafka nocna." << std::endl;
-			std::cout << "Na przeciwko wejúcia wisi ogromne lustro" << std::endl;
-			std::cout << "Twojπ uwagÍ przykuwa takøe gazeta wystajπca spod ≥Ûøka." << std::endl;
-			std::cout << std::endl;
+			txtManager::getTxtManager().print("bed", 1);
+			
 			break;
 
 		case Locations::Kitchen:
 			if (_state[Locations::Kitchen] == 0)
 			{
-				std::cout << "Kuchnia wyglπda inaczej niø zwykle." << std::endl;
-				std::cout << "Jednakowoø nic nie wydaje siÍ wychodziÊ poza schemat" << std::endl;
-				std::cout << "Na kuchence po≥oøony jest garczek" << std::endl;
-				std::cout << "Na ladzie ko≥o kuchenki widzisz krÛtki, ale ostry nÛø" << std::endl << std::endl;
+				txtManager::getTxtManager().print("kit1", 1);
+				txtManager::getTxtManager().print("kit2", 1);
+				txtManager::getTxtManager().print("kit3", 1);
 			}
 			if (_state[Locations::Kitchen] == 1)
 			{
-				std::cout << "Kuchnia wyglπda inaczej niø zwykle." << std::endl;
-				std::cout << "Jednakowoø nic nie wydaje siÍ wychodziÊ poza schemat" << std::endl;
-				std::cout << "Na ladzie ko≥o kuchenki widzisz krÛtki, ale ostry nÛø" << std::endl << std::endl;
+				txtManager::getTxtManager().print("kit1", 1);
+				txtManager::getTxtManager().print("kit3", 1);
 			}
 			if (_state[Locations::Kitchen] == 2)
 			{
-				std::cout << "Kuchnia wyglπda inaczej niø zwykle." << std::endl;
-				std::cout << "Jednakowoø nic nie wydaje siÍ wychodziÊ poza schemat" << std::endl;
-				std::cout << "Na kuchence po≥oøony jest garczek" << std::endl << std::endl;
+				txtManager::getTxtManager().print("kit1", 1);
+				txtManager::getTxtManager().print("kit2", 1);
 			}
 			if (_state[Locations::Kitchen] == 3)
 			{
-				std::cout << "Kuchnia wyglπda inaczej niø zwykle." << std::endl;
-				std::cout << "Jednakowoø nic nie wydaje siÍ wychodziÊ poza schemat" << std::endl << std::endl;
+				txtManager::getTxtManager().print("kit1", 1);
 			}
 
 			break;
 
 		case Locations::Garage:
 
-			std::cout << "Garaø jak garaø nic tu nie ma oprÛcz wypasionego samochodu" << std::endl;
-			std::cout << "A przynajmniej narazie xd." << std::endl << std::endl;
+			txtManager::getTxtManager().print("gar", 1);
 			break;
 
 		case Locations::Attic:
 			if (_state[Locations::Attic] == 0)
 			{
-				std::cout << "Wychodzisz po stromych, skrzypiπcych schodach, ktÛre ledwo" << std::endl;
-				std::cout << "ale jednak wytrzymujπ twÛj ciÍøar." << std::endl;
-				std::cout << "Podnoszπc wie coraz wyøej spoglπdasz na stary fortepian." << std::endl;
-				std::cout << "Jednak przez przypadek kierujesz wzrok na inne úmieci ktÛre tam leøπ." << std::endl << std::endl;
+				txtManager::getTxtManager().print("att1", 1);
+				txtManager::getTxtManager().print("att3", 1);
+				txtManager::getTxtManager().print("att2", 1);
 			}
 			if (_state[Locations::Attic] == 1)
 			{
-				std::cout << "Wychodzisz po stromych, skrzypiπcych schodach, ktÛre ledwo" << std::endl;
-				std::cout << "ale jednak wytrzymujπ twÛj ciÍøar." << std::endl;
-				std::cout << "Jednak przez przypadek kierujesz wzrok na inne úmieci ktÛre tam leøπ." << std::endl << std::endl;
+
+				txtManager::getTxtManager().print("att1", 1);
+				txtManager::getTxtManager().print("att3", 1);
 			}
 			if (_state[Locations::Attic] == 2)
 			{
-				std::cout << "Wychodzisz po stromych, skrzypiπcych schodach, ktÛre ledwo" << std::endl;
-				std::cout << "ale jednak wytrzymujπ twÛj ciÍøar." << std::endl;
-				std::cout << "Podnoszπc sie coraz wyøej spoglπdasz na stary fortepian." << std::endl << std::endl;
+				txtManager::getTxtManager().print("att1", 1);
+				txtManager::getTxtManager().print("att2", 1);
 			}
 			if (_state[Locations::Attic] == 3)
 			{
-				std::cout << "Wychodzisz po stromych, skrzypiπcych schodach, ktÛre ledwo" << std::endl;
-				std::cout << "ale jednak wytrzymujπ twÛj ciÍøar." << std::endl << std::endl;
+				txtManager::getTxtManager().print("att1", 1);
 			}
 
 			break;
@@ -98,7 +84,7 @@ namespace TG
 		case Locations::Basemant:
 			if (_state[Locations::Basemant] == 0)
 			{
-				std::cout << "Nartafiasz na 3 szczury." << std::endl << std::endl;
+				txtManager::getTxtManager().print("attmess", 1);
 				Arena(pl,3,gr);
 				if (pl.getStatistics().getHp() <= 0)
 				{
@@ -108,17 +94,7 @@ namespace TG
 			}
 			if (_state[Locations::Basemant] == 1 && gr == 1)
 			{
-				std::cout << "Pokona≥eú szczury" << std::endl;
-				std::cout << "Dziwne düwiÍki nasilajπ siÍ!?" << std::endl;
-				std::cout << "Z zaciekawieniem zaglπdasz do piwnicy." << std::endl;
-				std::cout << "Zapalasz úwiat≥o...... " << std::endl;
-				std::cout << "Wchodzisz coraz g≥Íbiej." << std::endl;
-				std::cout << "Nagle wejúcie zostaje zaczaúniÍte." << std::endl;
-				std::cout << "Widzisz ma≥e, s≥odki kotki i umierasz ze szczÍúcia." << std::endl;
-				//std::cout << "åwiat≥o zaczyna mrÛgaÊ, widzisz tylko jakieú dziwne cienie." << std::endl;
-				//std::cout << "Czujesz potÍøny, k≥ujπcy bul w klatce piersiowej." << std::endl;
-				//std::cout << "Umierasz ...... " << std::endl;
-				std::cout << "Happy End" << std::endl << std::endl;
+				txtManager::getTxtManager().print("bas", 1);
 				_state[Locations::Basemant] = 2;
 				gr = 0;
 			}
@@ -127,10 +103,7 @@ namespace TG
 
 	void LocationMachine::manage(States &s ,Backpack &bp)
 	{
-		std::cout << "Opcje: " << std::endl;
-		std::cout << "1 -> prouszanie" << std::endl;
-		std::cout << "2 -> przeszukaj lokacje" << std::endl;
-		std::cout << "3 -> menu postaci" << std::endl;
+		txtManager::getTxtManager().print("loc opt", 1);
 
 		int tmp;
 		do
@@ -158,10 +131,9 @@ namespace TG
 		switch (_location)
 		{
 		case Locations::Bedroom:
-			std::cout << "1 -> Idü do kuchnii" << std::endl;
-			std::cout << "2 -> Idü do garaøu" << std::endl;
-			std::cout << "3 -> Idü na strych" << std::endl;
-			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
+
+			txtManager::getTxtManager().print("bedt", 1);
+			
 
 			do
 			{
@@ -175,10 +147,7 @@ namespace TG
 			break;
 
 		case Locations::Kitchen:
-			std::cout << "1 -> Idü do sypialni" << std::endl;
-			std::cout << "2 -> Idü do garaøu" << std::endl;
-			std::cout << "3 -> Idü na strych" << std::endl;
-			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
+			txtManager::getTxtManager().print("kitt", 1);
 
 			do
 			{
@@ -192,10 +161,7 @@ namespace TG
 			break;
 
 		case Locations::Garage:
-			std::cout << "1 -> Idü do kuchnii" << std::endl;
-			std::cout << "2 -> Idü do sypialni" << std::endl;
-			std::cout << "3 -> Idü na strych" << std::endl;
-			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
+			txtManager::getTxtManager().print("gart", 1);
 
 			do
 			{
@@ -209,10 +175,7 @@ namespace TG
 			break;
 
 		case Locations::Attic:
-			std::cout << "1 -> Idü do kuchnii" << std::endl;
-			std::cout << "2 -> Idü do garaøu" << std::endl;
-			std::cout << "3 -> Idü na sypialni" << std::endl;
-			std::cout << "4 -> Idü do piwnicy" << std::endl << std::endl;
+			txtManager::getTxtManager().print("attt", 1);
 
 			do
 			{
@@ -239,22 +202,23 @@ namespace TG
 		switch (_location)
 		{
 		case Locations::Bedroom:
-			std::cout << "Nic nie znajdujesz." << std::endl << std::endl;
+			txtManager::getTxtManager().print("nf", 1);
 			break;
 
 		case Locations::Kitchen:
 			switch (_state[Locations::Kitchen])
 			{
 			case 0:
-				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "-NÛø kuchenny" << std::endl;
-				std::cout << "-Pokrywka" << std::endl;
-				std::cout << "Co bierzesz: " << std::endl;
-				std::cout << "0 -> nic" << std::endl;
-				std::cout << "1 -> ";
-				w1.info();
-				std::cout << "2 -> ";
-				w2.info();
+				txtManager::getTxtManager().print("f", 1);
+				txtManager::getTxtManager().print("w1", 1);
+				txtManager::getTxtManager().print("w2", 1);
+				txtManager::getTxtManager().print("take", 1);
+				txtManager::getTxtManager().print(0, 1);
+				txtManager::getTxtManager().print("nic", 1);
+				txtManager::getTxtManager().print(1, 1);
+				txtManager::getTxtManager().print(&w1);
+				txtManager::getTxtManager().print(2, 1);
+				txtManager::getTxtManager().print(&w2);
 				do
 				{
 					std::cin >> tmp;
@@ -272,10 +236,13 @@ namespace TG
 				break;
 
 			case 1:
-				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "-NÛø kuchenny" << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ): " << std::endl;
-				std::cout << "1 -> ";
+				txtManager::getTxtManager().print("f", 1);
+				txtManager::getTxtManager().print("w1", 1);
+				txtManager::getTxtManager().print("take", 1);
+				txtManager::getTxtManager().print(0, 1);
+				txtManager::getTxtManager().print("nic", 1);
+				txtManager::getTxtManager().print(1, 1);
+				txtManager::getTxtManager().print(&w1);
 				w1.info();
 				do
 				{
@@ -289,10 +256,13 @@ namespace TG
 				break;
 
 			case 2:
-				std::cout << "Znajdujesz:" << std::endl; 
-				std::cout << "-Pokrywka" << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ): " << std::endl;
-				std::cout << "1 -> ";
+				txtManager::getTxtManager().print("f", 1);
+				txtManager::getTxtManager().print("w2", 1);
+				txtManager::getTxtManager().print("take", 1);
+				txtManager::getTxtManager().print(0, 1);
+				txtManager::getTxtManager().print("nic", 1);
+				txtManager::getTxtManager().print(1, 1);
+				txtManager::getTxtManager().print(&w2);
 				w2.info();
 				do
 				{
@@ -306,29 +276,30 @@ namespace TG
 				break;
 
 			case 3:
-				std::cout << "Nic nie znajdujesz." << std::endl << std::endl;
+				txtManager::getTxtManager().print("nf", 1);
 				break;
 			}
 
 			break;
 
 		case Locations::Garage:
-			std::cout << "Nic nie znajdujesz." << std::endl << std::endl;
+			txtManager::getTxtManager().print("nf", 1);
 			break;
 
 		case Locations::Attic:
 			switch (_state[Locations::Attic])
 			{
 			case 0:
-				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "-Stary Bandaø" << std::endl;
-				std::cout << "-Bandaø" << std::endl;
-				std::cout << "Co bierzesz: " << std::endl;
-				std::cout << "0 -> nic" << std::endl;
-				std::cout << "1 -> ";
-				i1.info();
-				std::cout << "2 -> ";
-				i2.info();
+				txtManager::getTxtManager().print("f", 1);
+				txtManager::getTxtManager().print("i1", 1);
+				txtManager::getTxtManager().print("i2", 1);
+				txtManager::getTxtManager().print("take", 1);
+				txtManager::getTxtManager().print(0, 1);
+				txtManager::getTxtManager().print("nic", 1);
+				txtManager::getTxtManager().print(1, 1);
+				txtManager::getTxtManager().print(&i1);
+				txtManager::getTxtManager().print(2, 1);
+				txtManager::getTxtManager().print(&i2);
 				do
 				{
 					std::cin >> tmp;
@@ -346,11 +317,14 @@ namespace TG
 				break;
 
 			case 1:
-				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "-Stary Bandaø" << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ): " << std::endl;
-				std::cout << "1 -> ";
-				i1.info();
+
+				txtManager::getTxtManager().print("f", 1);
+				txtManager::getTxtManager().print("i1", 1);
+				txtManager::getTxtManager().print("take", 1);
+				txtManager::getTxtManager().print(0, 1);
+				txtManager::getTxtManager().print("nic", 1);
+				txtManager::getTxtManager().print(1, 1);
+				txtManager::getTxtManager().print(&i1);
 				do
 				{
 					std::cin >> tmp;
@@ -363,11 +337,14 @@ namespace TG
 				break;
 
 			case 2:
-				std::cout << "Znajdujesz:" << std::endl;
-				std::cout << "-Bandaø" << std::endl;
-				std::cout << "Co bierzesz ( 0 -> nic ): " << std::endl;
-				std::cout << "1 -> ";
-				i2.info();
+
+				txtManager::getTxtManager().print("f", 1);
+				txtManager::getTxtManager().print("i2", 1);
+				txtManager::getTxtManager().print("take", 1);
+				txtManager::getTxtManager().print(0, 1);
+				txtManager::getTxtManager().print("nic", 1);
+				txtManager::getTxtManager().print(1, 1);
+				txtManager::getTxtManager().print(&i2);
 				do
 				{
 					std::cin >> tmp;
@@ -380,7 +357,7 @@ namespace TG
 				break;
 
 			case 3:
-				std::cout << "Nic nie znajdujesz." << std::endl << std::endl;
+				txtManager::getTxtManager().print("nf", 1);
 				break;
 			}
 		}

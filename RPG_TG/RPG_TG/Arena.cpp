@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include "txtManager.h"
 
 namespace TG
 {
@@ -20,11 +21,9 @@ namespace TG
 		while (!_enemies.empty() && pl.getStatistics().getHp() > 0 )
 		{
 			// tura graacza 
-			std::cout << "Twoje ";
-			pl.getStatistics().info();
-			std::cout << "Opcje: " << std::endl;
-			std::cout << "1 -> atak " << std::endl;
-			std::cout << "2 -> akcje " << std::endl << std::endl;
+			txtManager::getTxtManager().print("twoje", 1);
+			txtManager::getTxtManager().print(&pl.getStatistics());
+			txtManager::getTxtManager().print("Arena opt", 1);
 
 			int tmp;
 			do
@@ -38,10 +37,10 @@ namespace TG
 				{
 					for (unsigned int i = 1; i <= _enemies.size(); i++)
 					{
-						std::cout << i << " -> " << _enemies[i - 1].getStatistics().getName() << "\n";
-						_enemies[i - 1].getStatistics().info();
+						txtManager::getTxtManager().print( i , 0);
+						txtManager::getTxtManager().print(&_enemies[i-1]);
 					}
-					std::cout << "Atakujesz: ";
+					txtManager::getTxtManager().print("patt", 1);
 					std::cin >> tmp;
 
 					_enemies[tmp - 1].getStatistics().updateHP(-1 * pl.getStatistics().getDamage());
@@ -58,12 +57,15 @@ namespace TG
 				{
 					for (unsigned int i = 1; i <= _enemies.size(); i++)
 					{
-						std::cout << i << " -> " << _enemies[i - 1].getStatistics().getName() << " ";
+						txtManager::getTxtManager().print(i, 0);
+
+						txtManager::getTxtManager().print(_enemies[i - 1].getStatistics().getName(), 0);
+						txtManager::getTxtManager().print(" ", 0);
 						_enemies[i - 1].attack(pl);
 					}
 				}
 			}
-			if(gr && pl.getStatistics().getHp() > 0) std::cout << "//////////////////////////////////////////////////////////////////////" << std::endl;
+			if(gr && pl.getStatistics().getHp() > 0) txtManager::getTxtManager().print("///", 1);
 		}
 		
 		//system("cls");

@@ -7,6 +7,8 @@
 #include "Item.h"
 #include "Statistics.h"
 #include "Player.h"
+#include "Enemy.h"
+#include "Backpack.h"
 
 namespace TG
 {
@@ -22,6 +24,9 @@ namespace TG
 		void print(Item *i);
 		void print(Statistics *s);
 		void print(Player *p);
+		void print(Enemy *e);
+		void print(Backpack *b);
+		void attack(std::string s, int a);
 
 		std::map < std::string, std::vector <std::string> > &getTxt();
 
