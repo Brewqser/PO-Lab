@@ -11,18 +11,7 @@ int main()
 {
 	srand((unsigned int)time(NULL));
 
-	TG::Player p(13, 123);
-	p.getBackpack().add(TG::Weapon("aaa", 12, 3));
-	p.getBackpack().add(TG::Weapon("bbb", 123, 13));
-	p.getBackpack().add(TG::Weapon("ccc", 51, 8));
-	p.getBackpack().add(TG::Weapon("ddd", 69, 9));
-
-	p.getBackpack().add(TG::Item("a", 12, 3));
-	p.getBackpack().add(TG::Item("b", 1, 1));
-	p.getBackpack().add(TG::Item("c", 14, 0));
-	p.getBackpack().add(TG::Item("d", 69, 13));
-
-		p.info();
+	TG::Engine::getEngine().run();
 
 
 	/*
@@ -42,12 +31,22 @@ int main()
 	TG::Weapon w("ASD", 1314141, 123);
 	w.info();
 	w1.info();
-	*/
-	
-	//TG::Engine::getEngine().run();
-	
 
-	/*
+	
+	//
+	
+	TG::Player p(13, 123);
+	p.getBackpack().add(TG::Weapon("aaa", 12, 3));
+	p.getBackpack().add(TG::Weapon("bbb", 123, 13));
+	p.getBackpack().add(TG::Weapon("ccc", 51, 8));
+	p.getBackpack().add(TG::Weapon("ddd", 69, 9));
+
+	p.getBackpack().add(TG::Item("a", 12, 3));
+	p.getBackpack().add(TG::Item("b", 1, 1));
+	p.getBackpack().add(TG::Item("c", 14, 0));
+	p.getBackpack().add(TG::Item("d", 69, 13));
+
+	p.info();
 	
 
 	TG::Player p(1, 131);

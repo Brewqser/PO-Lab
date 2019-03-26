@@ -134,6 +134,27 @@ namespace TG
 		setlocale(LC_ALL, "");
 		std::string key;
 
+		key = "go";
+		_txt[key].push_back("GAME OVER");
+
+		key = "nic";
+		_txt[key].push_back("nic");
+
+		key = "take";
+		_txt[key].push_back("Co bierzesz:");
+
+		key = "w1";
+		_txt[key].push_back("-Nó¿ kuchenny");
+
+		key = "w2";
+		_txt[key].push_back("-Pokrywka");
+
+		key = "i1";
+		_txt[key].push_back("-Stary Banda¿");
+
+		key = "i2";
+		_txt[key].push_back("-Banda¿");
+
 		key = "f";
 		_txt[key].push_back("Znajdujesz:");
 
