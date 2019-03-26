@@ -1,22 +1,54 @@
-#include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 
-#include "Definitions.h"
 #include "Engine.h"
+#include "txtManager.h"
 
 using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "");
 	srand((unsigned int)time(NULL));
 
-	TG::Engine::getEngine().run();
+	TG::Player p(13, 123);
+	p.getBackpack().add(TG::Weapon("aaa", 12, 3));
+	p.getBackpack().add(TG::Weapon("bbb", 123, 13));
+	p.getBackpack().add(TG::Weapon("ccc", 51, 8));
+	p.getBackpack().add(TG::Weapon("ddd", 69, 9));
+
+	p.getBackpack().add(TG::Item("a", 12, 3));
+	p.getBackpack().add(TG::Item("b", 1, 1));
+	p.getBackpack().add(TG::Item("c", 14, 0));
+	p.getBackpack().add(TG::Item("d", 69, 13));
+
+		p.info();
+
 
 	/*
+	TG::Statistics s;
+	s.info();
+	s.updateHP(-123);
+	s.info();
+	
+	TG::txtManager::getTxtManager().print("endl",0);
+	TG::Item i1;
+	TG::Item i("Asd", 12, 51);
+	i.info();
+	i1.info();
 
+	TG::txtManager::getTxtManager().print("endl",0);
+	TG::Weapon w1;
+	TG::Weapon w("ASD", 1314141, 123);
+	w.info();
+	w1.info();
+	*/
+	
+	//TG::Engine::getEngine().run();
+	
+
+	/*
+	
 
 	TG::Player p(1, 131);
 	bool gr = 1;
@@ -119,10 +151,7 @@ int main()
 	i.info();
 	i.info();
 
-	TG::Statistics s;
-	s.info();
-	s.updateHP(-123);
-	s.info();
+	
 	*/
 	system("pause");
 }

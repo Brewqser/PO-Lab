@@ -1,6 +1,6 @@
 #include "Weapon.h"
 
-#include <iostream>
+#include "txtManager.h"
 
 namespace TG
 {
@@ -21,14 +21,7 @@ namespace TG
 
 	void Weapon::info()
 	{
-		if (_name != "")
-		{
-			std::cout << _name << " (obra¿enia: " << _damage << ", ciê¿ar: " << _weight << ")" <<  std::endl;
-		}
-		else
-		{
-			std::cout << "Brak broni." << std::endl;
-		}
+		txtManager::getTxtManager().print(this);
 	}
 	
 	void Weapon::setName(std::string n)

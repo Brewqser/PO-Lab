@@ -1,6 +1,5 @@
 #include "Item.h"
-
-#include <iostream>
+#include "txtManager.h"
 
 namespace TG
 {
@@ -19,14 +18,7 @@ namespace TG
 
 	void Item::info()
 	{
-		if (_name != "")
-		{
-			std::cout << _name << " (leczenie: " << _hpadd << ", ciê¿ar: " << _weight << ")" << std::endl;
-		}
-		else
-		{
-			std::cout << "Brak przedmiotu." << std::endl;
-		}
+		txtManager::getTxtManager().print(this);
 	}
 
 	void Item::setName(std::string n)

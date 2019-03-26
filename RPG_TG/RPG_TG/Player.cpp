@@ -1,5 +1,6 @@
 #include "Player.h"
 
+#include "txtManager.h"
 #include <iostream>
 
 namespace TG
@@ -18,20 +19,12 @@ namespace TG
 
 	void Player::info()
 	{
-		_statistics.info();
-		std::cout << "Broñ: ";
-		_weapon.info();
-		std::cout << std::endl;
+		txtManager::getTxtManager().print(this);
 	}
 
 	void Player::manage(States &s, bool &gr)
 	{
-		std::cout << "Opcje: " << std::endl;
-		std::cout << "1 -> plecak" << std::endl;
-		std::cout << "2 -> u¿yj przedmiot" << std::endl;
-		std::cout << "3 -> zarz¹daj broni¹" << std::endl;
-		std::cout << "4 -> menu poruszania" << std::endl;
-		std::cout << "9 -> samobójstwo" << std::endl;
+		txtManager::getTxtManager().print("Player opt", 1);
 
 		int tmp;
 		do
@@ -57,7 +50,7 @@ namespace TG
 		}
 		if (tmp == 9)
 		{
-			std::cout << "Pope³niasz samobójstwo" << std::endl;
+			txtManager::getTxtManager().print("sb", 1);
 			_statistics.setHp(0);
 			gr = 0;
 		}
@@ -69,14 +62,14 @@ namespace TG
 		
 		if (ite.size() != 0)
 		{
-			std::cout << "Którego przedmiotu chcesz u¿yæ: " << std::endl;
-			std::cout << "0 -> ¿adnego" << std::endl;
+			txtManager::getTxtManager().print("Player opt2", 1);
+			
 			for (unsigned int i = 0; i < ite.size(); i++)
 			{
-				std::cout << i + 1 << " -> ";
+				txtManager::getTxtManager().print(i+1, 1);
 				ite[i].info();
 			}
-			std::cout << std::endl;
+			txtManager::getTxtManager().print("endl", 1);
 
 			int tmp;
 			do
@@ -92,21 +85,18 @@ namespace TG
 			}
 			else
 			{
-				std::cout << "Nie u¿yto ¿adnego przedmiotu." << std::endl << std::endl;
+				txtManager::getTxtManager().print("not use item", 1);
 			}
 		}
 		else
 		{
-			std::cout << "Nie posiadasz ¿adnego przedmiotu." << std::endl << std::endl;
+			txtManager::getTxtManager().print("not equip wep", 1);
 		}
 	}
 
 	void Player::equipWeapon()
 	{
-		std::cout << "Co zamierzasz zrobiæ z posiadan¹ broni¹:" << std::endl;
-		std::cout << "0 -> nic" << std::endl;
-		std::cout << "1 -> schowaj do plecaka" << std::endl;
-		std::cout << "2 -> zmieñ" << std::endl;
+		txtManager::getTxtManager().print("Player opt3", 1);
 
 		int tmp;
 		do
@@ -116,7 +106,7 @@ namespace TG
 
 		if (tmp == 0)
 		{
-			std::cout << "Nic nie zrobiono." << std::endl << std::endl;
+			txtManager::getTxtManager().print("undone", 1);
 		}
 		if (tmp == 1)
 		{
@@ -127,7 +117,7 @@ namespace TG
 			}
 			else
 			{
-				std::cout << "Nie mo¿na zdj¹æ piêœci ( xd ) " << std::endl << std::endl;
+				txtManager::getTxtManager().print("unable to can", 1);
 			}
 		}
 		if (tmp == 2)
@@ -136,15 +126,14 @@ namespace TG
 			
 			if (wep.size() != 0)
 			{
-				std::cout << "Na któr¹ broñ chcesz zamieniæ:" << std::endl;
-				std::cout << "0 -> ¿adn¹" << std::endl;
+				txtManager::getTxtManager().print("Player opt3", 1);
 
 				for (unsigned int i = 0; i < wep.size(); i++)
 				{
-					std::cout << i + 1 << " -> ";
+					txtManager::getTxtManager().print(i+1, 1);
 					wep[i].info();
 				}
-				std::cout << std::endl;
+				txtManager::getTxtManager().print("endl", 0);
 
 				int tmp;
 				do
@@ -160,12 +149,12 @@ namespace TG
 				}
 				else
 				{
-					std::cout << "Nie zamieniono broni." << std::endl << std::endl;
+					txtManager::getTxtManager().print("swapnt", 1);
 				}
 			}
 			else
 			{
-				std::cout << "Nie posiadasz ¿adnej broni w plecaku." << std::endl << std::endl;
+				txtManager::getTxtManager().print("weapon not", 1);
 			}
 		}
 		_statistics.setDamage(_weapon.getDamage());

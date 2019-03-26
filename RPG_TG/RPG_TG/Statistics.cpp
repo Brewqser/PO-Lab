@@ -1,6 +1,6 @@
 #include "Statistics.h"
 
-#include <iostream>
+#include "txtManager.h"
 
 namespace TG
 {
@@ -20,9 +20,7 @@ namespace TG
 
 	void Statistics::info()
 	{
-		std::cout << "Statystyki:" << std::endl;
-		std::cout << "- HP: " << _hp << std::endl; 
-		std::cout << "- Damage: " << _damage << std::endl << std::endl;
+		txtManager::getTxtManager().print(this);
 	}
 
 	void Statistics::updateHP(int u)
