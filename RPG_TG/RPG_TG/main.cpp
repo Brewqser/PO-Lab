@@ -13,12 +13,43 @@ int main()
 
 	TG::Engine::getEngine().run();
 
-
 	/*
 	TG::Statistics s;
 	s.info();
 	s.updateHP(-123);
 	s.info();
+
+
+	TG::Backpack b;
+	b.info();
+
+	b.add(TG::Weapon("bbb", 1234, 5));
+
+	b.info();
+
+	b.add(TG::Item("aaa", 1234, 5));
+
+
+	b.info();
+
+	b.add(TG::Weapon("aqef", 0, 5));
+
+	b.info();
+
+	b.remove();
+
+	b.info();
+
+	b.add(TG::Weapon("aaasdad", 1214, 41));
+
+	b.info();
+
+	b.add(TG::Item("aadadaf", 0, 5));
+
+	b.info();
+
+	b.manage();
+
 	
 	TG::txtManager::getTxtManager().print("endl",0);
 	TG::Item i1;
@@ -111,35 +142,7 @@ int main()
 
 	/*
 
-	TG::Backpack b;
-	b.info();
-
-	b.add(TG::Weapon("bbb", 1234, 5));
-
-	b.info();
-
-	b.add(TG::Item("aaa", 1234, 5));
-
-
-	b.info();
-
-	b.add(TG::Weapon("aqef", 0, 5));
-
-	b.info();
-
-	b.remove();
-
-	b.info();
-
-	b.add(TG::Weapon("aaasdad", 1214, 41));
-
-	b.info();
-
-	b.add(TG::Item("aadadaf", 0, 5));
-
-	b.info();
-
-	b.manage();
+	
 
 	TG::Weapon w("ASD", 1314141, 123);
 

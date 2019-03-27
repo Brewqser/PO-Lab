@@ -120,6 +120,7 @@ namespace TG
 	{
 		this->print("bp1", 0);
 		std::cout << b->getFreeWeigth();
+		this->print("endl", 1);
 		this->print("bp2", 1);
 	}
 
