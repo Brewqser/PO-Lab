@@ -15,7 +15,7 @@ namespace TG
 			_state.push_back(0);
 		}
 
-		txtManager::getTxtManager().print("start", 1);
+		//txtManager::getTxtManager().print("start", 1);
 	}
 
 	void LocationMachine::info(Player &pl,bool &gr)

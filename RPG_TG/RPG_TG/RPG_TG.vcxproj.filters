@@ -48,6 +48,15 @@
     <ClCompile Include="txtManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="txt_file_Handle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="txt_file_Body_txt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="txt_file_Body_XML.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Statistics.h">
@@ -81,6 +90,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="txtManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="txt_file_Body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="txt_file_Handle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="txt_file_Body_txt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="txt_file_Body_XML.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

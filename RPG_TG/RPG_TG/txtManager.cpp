@@ -135,6 +135,9 @@ namespace TG
 		setlocale(LC_ALL, "");
 		std::string key;
 
+		key = "notImplemented";
+		_txt[key].push_back("NotImplementedException");
+
 		key = "go";
 		_txt[key].push_back("GAME OVER");
 
@@ -312,7 +315,7 @@ namespace TG
 		key = "undone";
 		_txt[key].push_back("Nic nie zrobiono.");
 
-		key = "Player opt";
+		key = "Player opt1";
 		_txt[key].push_back("Co zamierzasz zrobiæ z posiadan¹ broni¹:");
 		_txt[key].push_back("0 -> nic");
 		_txt[key].push_back("1 -> schowaj do plecaka");

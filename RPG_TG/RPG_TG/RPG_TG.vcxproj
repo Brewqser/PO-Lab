@@ -125,6 +125,9 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Statistics.cpp" />
     <ClCompile Include="txtManager.cpp" />
+    <ClCompile Include="txt_file_Body_txt.cpp" />
+    <ClCompile Include="txt_file_Body_XML.cpp" />
+    <ClCompile Include="txt_file_Handle.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +141,10 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Statistics.h" />
     <ClInclude Include="txtManager.h" />
+    <ClInclude Include="txt_file_Body.h" />
+    <ClInclude Include="txt_file_Body_txt.h" />
+    <ClInclude Include="txt_file_Body_XML.h" />
+    <ClInclude Include="txt_file_Handle.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

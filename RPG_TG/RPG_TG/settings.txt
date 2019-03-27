@@ -1,0 +1,3 @@
+maxHp 123
+PlayerDamage 12
+basmantEnemy 3

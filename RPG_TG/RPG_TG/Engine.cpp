@@ -13,7 +13,7 @@ namespace TG
 
 	void Engine::run()
 	{
-		char a;
+		//char a;
 
 		while (_gameRun)
 		{
@@ -42,10 +42,15 @@ namespace TG
 		}
 	}
 
-	Engine::Engine() : _locationMachine(), _player()
+	Engine::Engine()  //:_locationMachine(), _player()
 	{
 		_gameRun = 1;
 		_state = States::travel;
+		//std::cout << "XD Dx" << std::endl;
+		_txt_loader = std::make_unique <txt_file_Handle>(txt_file_Handle::EHandledFileTypes::XML);
+		_txt_loader->Load_txt_file("settings", _settings);
+		_txt_loader = std::make_unique <txt_file_Handle>(txt_file_Handle::EHandledFileTypes::txt);
+		_txt_loader->Load_txt_file("settings", _settings);
 	}
 
 	Engine::Engine(const Engine &)
