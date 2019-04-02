@@ -1,8 +1,11 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 #include "Item.h"
 #include "Weapon.h"
+#include "sort_handle.h"
+#include <algorithm>
 
 namespace TG
 {
@@ -18,6 +21,8 @@ namespace TG
 		bool add(Weapon w);
 		void remove();
 		void manage();
+		void setsort(int s);
+		void sort();
 
 		void setFreeWeigth(int f);
 
@@ -29,6 +34,8 @@ namespace TG
 		int _freeWeigth;
 		std::vector < Item > _items;
 		std::vector < Weapon > _weapons;
+		 sort_handle _comp;
+
 	};
 
 }

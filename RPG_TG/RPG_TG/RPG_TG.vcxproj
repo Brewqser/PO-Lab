@@ -123,6 +123,7 @@
     <ClCompile Include="LocationMachine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="sort_handle.cpp" />
     <ClCompile Include="Statistics.cpp" />
     <ClCompile Include="txtManager.cpp" />
     <ClCompile Include="txt_file_Body_txt.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="LocationMachine.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="sort_handle.h" />
     <ClInclude Include="Statistics.h" />
     <ClInclude Include="txtManager.h" />
     <ClInclude Include="txt_file_Body.h" />

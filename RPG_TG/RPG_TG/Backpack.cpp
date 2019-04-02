@@ -6,14 +6,16 @@
 
 namespace TG
 {
-	Backpack::Backpack()
+	Backpack::Backpack() 
 	{
 		_freeWeigth = 10;
+		_comp.set(0);
 	}
 
 	Backpack::Backpack(int freeWeigth)
 	{
 		_freeWeigth = freeWeigth;
+		_comp.set(0);
 	}
 
 	void Backpack::info()
@@ -95,7 +97,7 @@ namespace TG
 		}
 		for (unsigned int i = 0; i < _weapons.size(); i++)
 		{
-			txtManager::getTxtManager().print(i + _items.size() + 1, 0);
+			txtManager::getTxtManager().print(i +(int) _items.size() + 1, 0);
 			_weapons[i].info();
 		}
 		txtManager::getTxtManager().print(" ", 0);
@@ -142,6 +144,17 @@ namespace TG
 		{
 			this->remove();
 		}
+	}
+
+	void Backpack::setsort(int i)
+	{
+		_comp.set(i);
+		std::cout << i << std::endl;
+	}
+
+	void Backpack::sort()
+	{
+		std::sort(_weapons.begin(), _weapons.end(), _comp);
 	}
 
 	void Backpack::setFreeWeigth(int f)
