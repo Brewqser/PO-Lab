@@ -120,6 +120,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Item_NPC_adapter.cpp" />
     <ClCompile Include="LocationMachine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -138,7 +139,9 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Item_NPC_adapter.h" />
     <ClInclude Include="LocationMachine.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="sort_handle.h" />
     <ClInclude Include="Statistics.h" />

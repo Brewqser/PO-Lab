@@ -2,9 +2,13 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+//#include <memory>
 
 #include "Engine.h"
 #include "txtManager.h"
+#include "NPC.h"
+#include "Item_NPC_adapter.h"
+
 
 using namespace std;
 
@@ -12,8 +16,22 @@ int main()
 {
 	srand((unsigned int)time(NULL));
 
-	//TG::Engine::getEngine();
+	std::unique_ptr<TG::NPC> npc = std::make_unique<TG::Item_NPC_adapter>("andrzej", 10, 1);
 
+
+
+	//TG::NPC *npc = new TG::Item_NPC_adapter("andrzej", 10, 1);
+
+	npc->info();
+
+	//delete npc;
+
+	//NPC npc = std::make_unique<NPC>();
+	
+
+	//TG::Engine::getEngine();
+	/*
+	
 	TG::Player p(13, 1230);
 	p.getBackpack().add(TG::Weapon("aaa", 12, 3));
 	p.getBackpack().add(TG::Weapon("bbb", 123, 13));
@@ -43,6 +61,7 @@ int main()
 
 		std::cout << std::endl;
 	}
+	*/
 
 	/*
 	TG::Statistics s;
