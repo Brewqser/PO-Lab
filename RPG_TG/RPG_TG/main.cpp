@@ -8,6 +8,7 @@
 #include "txtManager.h"
 #include "NPC.h"
 #include "Item_NPC_adapter.h"
+#include "Arena2.h"
 
 
 using namespace std;
@@ -18,16 +19,13 @@ int main()
 
 	std::unique_ptr<TG::NPC> npc = std::make_unique<TG::Item_NPC_adapter>("andrzej", 10, 1);
 
-
-
-	//TG::NPC *npc = new TG::Item_NPC_adapter("andrzej", 10, 1);
-
 	npc->info();
 
-	//delete npc;
 
-	//NPC npc = std::make_unique<NPC>();
-	
+	TG::Arena2("szczur");
+
+	TG::Arena2("mutant");
+
 
 	//TG::Engine::getEngine();
 	/*

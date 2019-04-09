@@ -116,8 +116,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arena.cpp" />
+    <ClCompile Include="Arena2.cpp" />
     <ClCompile Include="Backpack.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="enemyBody_mutant.cpp" />
+    <ClCompile Include="enemyBody_szczur.cpp" />
+    <ClCompile Include="enemyHandle.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Item_NPC_adapter.cpp" />
@@ -134,9 +138,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arena.h" />
+    <ClInclude Include="Arena2.h" />
     <ClInclude Include="Backpack.h" />
     <ClInclude Include="Definitions.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="enemyBody.h" />
+    <ClInclude Include="enemyBody_mutant.h" />
+    <ClInclude Include="enemyBody_szczur.h" />
+    <ClInclude Include="enemyHandle.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Item_NPC_adapter.h" />

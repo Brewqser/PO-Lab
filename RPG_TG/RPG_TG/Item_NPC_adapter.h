@@ -2,6 +2,7 @@
 
 #include "Item.h"
 #include "NPC.h"
+#include <string>
 
 namespace TG
 {
