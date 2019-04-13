@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-//#include <memory>
 
 #include "Engine.h"
 #include "txtManager.h"
@@ -25,6 +24,38 @@ int main()
 	TG::Arena2("szczur");
 
 	TG::Arena2("mutant");
+
+	TG::txtManager::getTxtManager().print("endl", 1);
+
+	TG::Player p(13, 1230);
+	p.getBackpack().add(TG::Weapon("aaa", 12, 3));
+	p.getBackpack().add(TG::Weapon("bbb", 123, 13));
+	p.getBackpack().add(TG::Weapon("ccc", 51, 8));
+	p.getBackpack().add(TG::Weapon("ddd", 69, 9));
+	p.getBackpack().add(TG::Weapon("aaaa", 11, 13));
+	p.getBackpack().add(TG::Weapon("fff", 13, 313));
+	p.getBackpack().add(TG::Weapon("ggg", 51, 81));
+	p.getBackpack().add(TG::Weapon("hhh", 19, 69));
+
+
+	p.getBackpack().add(TG::Weapon("hasd", 19, 12369));
+
+	bool gr = 1;
+	States s = States::arena;
+	int a;
+
+	while (gr)
+	{
+		std::cout << "0 -> sort by name" << std::endl;
+		std::cout << "1 -> sort by weight" << std::endl;
+		std::cout << "2 -> sort by damage" << std::endl;
+		cin >> a;
+		p.getBackpack().setsort(a);
+		p.getBackpack().sort();
+		p.getBackpack().info();
+
+		std::cout << std::endl;
+	}
 
 
 	//TG::Engine::getEngine();
